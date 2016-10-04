@@ -11,7 +11,7 @@ It does not do lemma's and dependency parsing<br /><br />
 1) Stanford CoreNLP 3.6.0<br />
 - Download / install CoreNLP 3.6.0: http://stanfordnlp.github.io/CoreNLP/index.html#download<br />
 - How to use CoreNLP server: http://stanfordnlp.github.io/CoreNLP/corenlp-server.html <br />
-- Go to installation directory and start: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9001" <br />
+- Go to installation directory and start: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" <br />
 
 2) PHP CURL<br />
 - Download CURL https://curl.haxx.se/download.html<br /><br />
