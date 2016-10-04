@@ -9,7 +9,7 @@ ini_set('display_errors', 1);
 
 // set root
 define('ROOT_DIR', $_SERVER['DOCUMENT_ROOT'].'/php-stanford-corenlp-adapter/');
-define('CURLURL'		, 'http://localhost:9001/');
+define('CURLURL'		, 'http://localhost:9000/');
 define('CURLPROPERTIES'	, '%22tokenize.whitespace%22%3A%22true%22%2C%22annotators%22%3A%22tokenize%2Cparse%2Clemma%22%2C%22outputFormat%22%3A%22text%22');
 
 
