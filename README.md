@@ -20,6 +20,8 @@ It does not do lemma's and dependency parsing (yet)<br /><br />
 <b>Usage</b><br />
 See index.php for example usage
 
+<b>Notes</b><br />
+- Tested on Windows and Linux<br />
 
 
 
