@@ -9,12 +9,11 @@ It does not do lemma's and dependency parsing<br /><br />
 
 <b>Installation/ requirements</b><br />
 1) Stanford CoreNLP 3.6.0<br />
-- Download / install CoreNLP 3.6.0
-- Start server: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9001" 
-Note: if port 9000 is blocked use another port
+- Download / install CoreNLP 3.6.0<br />
+- Start server: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9001" <br />
 
-2) PHP CURL<br /><br />
-- Download CURL https://curl.haxx.se/download.html
+2) PHP CURL<br />
+- Download CURL https://curl.haxx.se/download.html<br /><br />
 
 <b>Usage</b><br />
 See index.php for example usage
