@@ -15,7 +15,7 @@ It does not do lemma's and dependency parsing (yet)<br /><br />
 - If port 9000 is used by another program, use port 9001 <br />
 
 2) PHP CURL<br />
-- Download CURL https://curl.haxx.se/download.html<br /><br />
+- Probably you already got CURL on your machine, if not, download here: https://curl.haxx.se/download.html<br /><br />
 
 <b>Usage</b><br />
 See index.php for example usage
