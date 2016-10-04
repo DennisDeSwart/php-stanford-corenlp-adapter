@@ -22,6 +22,7 @@ See index.php for example usage
 
 <b>Notes</b><br />
 Tested on Windows and Linux<br />
+Tested on PHP 5.3 and PHP 7<br />
 
 
 
