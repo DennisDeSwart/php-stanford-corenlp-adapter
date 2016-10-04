@@ -2,10 +2,10 @@
 PHP adapter for Stanford CoreNLP tools<br /><br />
 
 <b>What does it do</b><br />
-It takes a CoreNLP parse and creates a tree with depths, ID's and parentID's. It is designed to be used for Stanford CoreNLP, where CoreNLP is working as a server<br /><br />
+It takes a Part-Of-Speech(POS) parse and creates a POS tree with depths, ID's and parentID's. It is designed to be used for Stanford CoreNLP, where CoreNLP is working as a server. However, it could easily be modified to take parsers from the Stanford online parser here: http://nlp.stanford.edu:8080/parser/index.jsp
 
 <b>What does it not do</b><br />
-It does not do lemma's and dependency parsing<br /><br />
+It does not do lemma's and dependency parsing (yet)<br /><br />
 
 <b>Installation/ requirements</b><br />
 1) Stanford CoreNLP 3.6.0<br />
