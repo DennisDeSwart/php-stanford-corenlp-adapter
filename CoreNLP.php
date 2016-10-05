@@ -11,13 +11,37 @@ class CoreNLP {
 	public $countID;
 	public $lastParent;
 	
-	public function __construct(){
+	public function __construct($clear_ID = true){ 	// true: clearAll, false: clear only depth
 		
-		// clear counters for every new Object
-		$this->clearCounters();
+		// clear counters for every new CoreNLP Object
+		if($clear_ID){
+			$this->clearAll();	// clears depth, normal ID and parent ID
+		} else {
+			$this->clearDepth(); // only clears depth
+		}
 	}
 	
-	public function clearCounters() {
+// combines common functions to get a tree
+	public function getTree($text){
+		
+		$this->clearDepth();
+		$parse 		= $this->getParse($text);				// gets the Java parse
+		$parsedText = $this->processParse($parse);			// slice the Stanford parse
+		$result 	= $this->getSentenceTree($parsedText);  // creates tree from the slice
+		
+		return $result;
+	}
+	
+	public function clearID(){
+		$this->countID 		= 0;
+	}
+	
+	public function clearDepth() {
+		$this->countDepth 	= 0;
+		$this->lastParent 	= 0;
+	}
+	
+	public function clearAll() {
 		$this->countDepth 	= 0;
 		$this->countID 		= 0;
 		$this->lastParent 	= 0;
