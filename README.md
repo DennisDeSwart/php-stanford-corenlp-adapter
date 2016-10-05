@@ -14,8 +14,8 @@ It does not do lemma's and dependency parsing (yet)<br /><br />
 - Go to installation directory and start: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" <br />
 - If port 9000 is used by another program, use port 9001 <br />
 
-2) PHP cURL<br />
-- If you are a developer, you probably got cURL installed. If not, download here: https://curl.haxx.se/download.html<br /><br />
+2) PHP cURL: If you haven't got cURL installed: download here: https://curl.haxx.se/download.html<br />
+3) Change the configuration settings in "index.php" for your situation. <br />
 
 <b>Usage</b><br />
 See index.php for example usage
