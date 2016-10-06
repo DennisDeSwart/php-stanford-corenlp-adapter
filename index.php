@@ -29,31 +29,39 @@
 	$coreNLP 	= new coreNLP();
 	
 	// First sentence
-	$text 		= 'The quick brown fox jumped over the lazy dog';
-	$tree1 		= $coreNLP->getTree($text);
+	$text1 		= 'The Golden Gate Bridge was designed by Joseph Strauss'; 	// showing off NER
+	$tree1 		 = $coreNLP->getTree($text1, true);							// true prints the tree
 	
-	// Optional: reset the tree ID's
-	$coreNLP->clearID();
+	$annotators1 		= $coreNLP->getTextAnnotators($text1);
+	$wordIDsAnnotators1 = $coreNLP->combineWordIDsAnnotators($tree1, $annotators1);
 	
+	// Optional: clear the tree ID's. Default is to autoincrement tree ID's unless a new CoreNLP object is made
+	//$coreNLP->clearID();
+		
 	// Second sentence
-	$text 		= 'The Golden Gate Bridge was designed by Joseph Strauss'; // showing off NER
-	$tree2 		= $coreNLP->getTree($text);
+	$text2 		= 'The quick brown fox jumped over the lazy dog';
+	$tree2 		= $coreNLP->getTree($text2);
 
 
 /**
  * Display result
  */
 
-	// show a nice header
+	echo '<pre>';
+	headerText('Part-Of-Speech tree1');
+	print_r($tree1);
+	
+	headerText('Word IDs + Annotators for tree1: pay attention to the good NER info');
+	print_r($wordIDsAnnotators1);
+	
+	headerText('Part-Of-Speech tree2: pay attention to the IDs resuming from tree1');
+	print_r($tree2);
+
+	// helper function for a nice header
 	function headerText($header){
 		echo '<br />***'.str_repeat('*', strlen($header)).'***<br />';
 		echo '** '.$header.' **<br />';
 		echo '***'.str_repeat('*', strlen($header)).'***<br /><br />';
 	}
 	
-	echo '<pre>';
-	headerText('Part-Of-Speech tree1');
-	print_r($tree1);
-	headerText('Part-Of-Speech tree2');
-	print_r($tree2);
-
+	

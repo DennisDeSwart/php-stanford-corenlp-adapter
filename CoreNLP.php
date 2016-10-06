@@ -21,13 +21,25 @@ class CoreNLP {
 		}
 	}
 	
+	
+/**
+ * 
+ * 	PARSE TREE FUNCTIONS
+ * 
+ */	
+	
 // combines common functions to get a tree
-	public function getTree($text){
+	public function getTree(string $text, $showParse = false){
 		
 		$this->clearDepth();
 		$parse 		= $this->getParse($text);				// gets the Java parse
 		$parsedText = $this->processParse($parse);			// slice the Stanford parse
 		$result 	= $this->getSentenceTree($parsedText);  // creates tree from the slice
+		
+		if($showParse){ // used for debugging
+			echo '<pre>';
+			print_r($parse);
+		}
 		
 		return $result;
 	}
@@ -48,7 +60,7 @@ class CoreNLP {
 	}
 	
 	// this sends the parse command to CoreNLP
-	private function sendCommandToCore($text){
+	private function sendCommandToCore(string $text){
 	
 		$command = 'curl --data "'.$text.'" "'.CURLURL.'"?properties={"'.CURLPROPERTIES.'"}';
 		exec($command, $output, $return);
@@ -73,7 +85,7 @@ class CoreNLP {
 	}
 	
 	// tell CoreNLP to parse a line of text 
-	public function getParse($text){
+	public function getParse(string $text){
 	
 		$response = false;
 		$response = $this->sendCommandToCore($text);
@@ -82,7 +94,7 @@ class CoreNLP {
 	}
 	
 	// process the output from the command line
-	public function processParse($parse){
+	public function processParse(array $parse){
 		
 		$treebankParse = false;
 		
@@ -97,16 +109,7 @@ class CoreNLP {
 
 	// getSentenceTree helper: assigns ID's to tree tags
 	private function assignId(&$value, $key){
-	
-		if(is_array($value)){
-			if(array_key_exists('depth', $value)){
-				$depth=$depth-1;
-			} else {
-				$depth=$depth+1;
-				$value['depth'] = $depth;
-			}
-		}
-	
+		
 		if($key == 'id'){
 			$value = $this->countID++;
 		}
@@ -149,7 +152,7 @@ class CoreNLP {
 		}
 	}
 	
-	public function getSentenceTree($sentence){
+	public function getSentenceTree(string $sentence){
 		
 		// set up the basic tree
 		$this->sentenceTree = array();
@@ -175,7 +178,7 @@ class CoreNLP {
 	 * Based on https://github.com/agentile/PHP-Stanford-NLP
 	 */
 	
-	private function runSentenceTree($sentence)
+	private function runSentenceTree(string $sentence)
 	{
 		$arr 	= array('pennTag' => null, 'id' => null);
 		$stack 	= array();
@@ -215,7 +218,7 @@ class CoreNLP {
 	/**
 	 * Find the position of a matching closing bracket for a string opening bracket
 	 */
-	private function getMatchingBracket($string, $start_pos)
+	private function getMatchingBracket(string $string, int $start_pos)
 	{
 		$length = strlen($string);
 		$bracket = 1;
@@ -229,5 +232,88 @@ class CoreNLP {
 				return $i;
 			}
 		}
+	}
+	
+	/**
+	 * 
+	 * 	TEXT, LEMMA, NER FUNCTIONS
+	 * 
+	 */
+	
+	private function find_key_by_substr(string $subString, array $array)
+	{
+		foreach ($array as $key => $value) {
+	
+			if(substr($value, 0, strlen($subString)) === $subString){
+	
+				return $key;
+			}
+		}
+		return false;
+	}
+	
+	// Returns group of arrays that contains annotation info on each word
+	public function getTextAnnotators(string $text){
+	
+		$parse 	= $this->getParse($text);		// gets the Java parse
+		$result = $this->runTextAnnotators($parse);	// 
+	
+		return $result;
+	}
+	
+	private function runTextAnnotators(array $parse){
+	
+		$textAnnotatorsStart  		 = $this->find_key_by_substr('[Text', $parse);					// it should usually be 2 (= the third row)
+		$textAnnotatorsFinishReverse = $this->find_key_by_substr('[Text', array_reverse($parse));	// to find the last key, reverse the array first then search	
+		$textAnnotatorsFinish 		 = count($parse)-$textAnnotatorsFinishReverse -$textAnnotatorsStart;
+	
+		$textAnnotators = array_slice($parse, $textAnnotatorsStart, $textAnnotatorsFinish);
+		
+		$result = $this->processTextAnnotators($textAnnotators);
+		return $result;
+	}
+	
+	private function processTextAnnotators(array $textAnnotators){
+	
+		foreach ($textAnnotators as $key => $value){
+			// remove first and last character
+			$value = substr($value, 1, -1);
+			$valueArray = explode(' ', $value);
+			
+			foreach ($valueArray as $value){
+				// remove first and last character
+				$valuePartArray	 = explode('=', $value);
+				$result[$key][$valuePartArray[0]] = $valuePartArray[1];
+			}
+		}
+		
+		return $result;
+	}
+	
+	public function getWordIDs(array $tree){
+		
+		$this->wordToTreeID = array();
+		array_walk($tree, array($this, "runWordIDs"));
+		
+		return $this->wordToTreeID;
+	}
+
+	private function runWordIDs($value, $key){
+		
+		if(is_array($value)){
+			if(array_key_exists('word', $value)){
+				$this->wordToTreeID[$value['id']] = $value['word'];
+			}
+			array_walk($value, array($this, "runWordIDs"));
+				
+		}
+	}
+	
+	public function combineWordIDsAnnotators(array $tree, array $annotators){
+	
+		$wordIDs = array_keys($this->getWordIDs($tree)); // need the keys
+		$result  = array_combine($wordIDs, array_values($annotators));
+		
+		return $result;
 	}
 }
