@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Php-stanford-corenlp-adapter by DennisDeSwart</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Php-stanford-corenlp-adapter</h1>
+        <p>PHP adapter for Stanford CoreNLP tools</p>
+
+        <p class="view"><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter">View the Project on GitHub <small>DennisDeSwart/php-stanford-corenlp-adapter</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a id="php-stanford-corenlp-adapter" class="anchor" href="#php-stanford-corenlp-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>php-stanford-corenlp-adapter</h1>
+
+<p>PHP adapter for Stanford CoreNLP tools<br><br></p>
+
+<p><b>What does it do</b><br>
+It takes a Part-Of-Speech(POS) parse from CoreNLP and creates: <br></p>
+
+<ul>
+<li>Part-Of-Speech Tree with depths, ID's and parentID's.<br>
+</li>
+<li>Annotator table with Text, Lemma and NER information<br>
+<br>
+</li>
+</ul>
+
+<p><b>What does it not do</b><br>
+It does not do dependency parsing (yet)<br><br></p>
+
+<p><b>Installation/ requirements</b><br>
+1) Stanford CoreNLP 3.6.0<br></p>
+
+<ul>
+<li>Download / install CoreNLP 3.6.0: <a href="http://stanfordnlp.github.io/CoreNLP/index.html#download">http://stanfordnlp.github.io/CoreNLP/index.html#download</a><br>
+</li>
+<li>How to use CoreNLP server: <a href="http://stanfordnlp.github.io/CoreNLP/corenlp-server.html">http://stanfordnlp.github.io/CoreNLP/corenlp-server.html</a> <br>
+</li>
+<li>Go to installation directory and start: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" <br>
+</li>
+<li>If port 9000 is used by another program, use port 9001 <br>
+</li>
+</ul>
+
+<p>2) PHP cURL: If you haven't got cURL installed: download here: <a href="https://curl.haxx.se/download.html">https://curl.haxx.se/download.html</a><br>
+3) Change the configuration settings in "index.php" for your situation. <br></p>
+
+<p><b>Usage</b><br>
+See index.php for example usage</p>
+
+<p><b>Notes</b><br></p>
+
+<ul>
+<li>Tested on Windows and Linux<br>
+</li>
+<li>Tested on PHP 5.3 and PHP 7<br>
+</li>
+<li>It is designed to be used with Stanford CoreNLP, where CoreNLP is working as a server. However, it could easily be modified to take a parse from the Stanford online parser here: <a href="http://nlp.stanford.edu:8080/parser/index.jsp">http://nlp.stanford.edu:8080/parser/index.jsp</a>, since the POS parse is of the same format</li>
+</ul>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/DennisDeSwart">DennisDeSwart</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
