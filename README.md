@@ -1,5 +1,5 @@
 # php-stanford-corenlp-adapter
-PHP adapter for Stanford CoreNLP tools<br /><br />
+PHP adapter for use with Stanford CoreNLP tools 3.6.0<br /><br />
 
 
 <b>Features:</b><br />
