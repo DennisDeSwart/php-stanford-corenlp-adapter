@@ -1,15 +1,14 @@
 # php-stanford-corenlp-adapter
 PHP adapter for Stanford CoreNLP tools<br /><br />
 
-<b>What does it do</b><br />
-It feeds a sentence or text to a CoreNLP server and creates: <br />
-- Part-Of-Speech Tree with depth, ID's and parentID's.<br />
-- Tokenize, Lemma, NER array. This process also adds tree ID's for matching data
-- Depency parsing array.  
-<br />
+<b>Features:</b><br />
+- The following annotators are used: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, parse 
+- It creates Part-Of-SpeechTrees with depth, ID's and parentID's.<br />
+- It creates a sorted array for tokens, lemma, NER, regexNER
+- It combines the token array with the Tree IDs for further analysis
 
-<b>What does it not do</b><br />
-CoreNLP has other features like Sentence Splitting that are not covered yet. I will add those as my spare time allows.<br /><br />
+<b>TODO list features</b>
+- Currently working on providing other features, mainly dependency parsing, relation and quote.
 
 <b>Installation/ requirements</b><br />
 1) Stanford CoreNLP 3.6.0<br />
