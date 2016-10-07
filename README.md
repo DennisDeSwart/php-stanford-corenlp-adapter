@@ -2,10 +2,11 @@
 PHP adapter for Stanford CoreNLP tools<br /><br />
 
 <b>Features:</b><br />
-- The following annotators are used: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, parse 
+- The following annotators are used: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, parse<br />
 - It creates Part-Of-SpeechTrees with depth, ID's and parentID's.<br />
 - It creates a sorted array for tokens, lemma, NER, regexNER<br />
-- It combines the token array with the Tree IDs for further analysis<br /><br />
+- It combines the token array with the Tree IDs for further analysis<br />
+
 <b>TODO list features:</b>
 - Currently working on providing other features, mainly dependency parsing, relation and quote.<br />
 <br />
