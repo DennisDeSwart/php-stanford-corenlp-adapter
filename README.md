@@ -4,7 +4,7 @@ PHP adapter for use with Stanford CoreNLP tools 3.6.0<br /><br />
 
 <b>Features:</b><br />
 - The following annotators are used: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, parse<br />
-- It creates Part-Of-SpeechTrees with depth, ID's and parentID's.<br />
+- It creates Part-Of-Speech Trees with depth, ID's and parentID's.<br />
 - It creates a sorted array for tokens, lemma, NER, regexNER<br />
 - It combines the token array with the Tree IDs for further analysis<br />
 &nbsp;<br />
