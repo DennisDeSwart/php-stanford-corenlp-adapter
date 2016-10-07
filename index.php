@@ -10,8 +10,8 @@
 /**
  * SET CONFIGURATION : CHANGE THIS TO YOUR OWN SETTINGS !!
  */
-	define('ROOT_DIR', $_SERVER['DOCUMENT_ROOT'].'/public/php-stanford-corenlp-adapter/');
-	define('CURLURL' , 'http://localhost:9001/');
+	define('ROOT_DIR', $_SERVER['DOCUMENT_ROOT'].'/php-stanford-corenlp-adapter/');
+	define('CURLURL' , 'http://localhost:9000/');
 	define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Clemma%2Cner%22%2C%22outputFormat%22%3A%22text%22');
 
 
