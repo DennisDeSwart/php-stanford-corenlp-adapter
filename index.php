@@ -10,9 +10,9 @@
 /**
  * SET CONFIGURATION : CHANGE THIS TO YOUR OWN SETTINGS !!
  */
-	define('ROOT_DIR', $_SERVER['DOCUMENT_ROOT'].'/php-stanford-corenlp-adapter/');
-	define('CURLURL' , 'http://localhost:9000/');
-	define('CURLPROPERTIES' , '%22tokenize.whitespace%22%3A%22true%22%2C%22annotators%22%3A%22tokenize%2Cner%2Cdcoref%2Clemma%22%2C%22outputFormat%22%3A%22text%22');
+	define('ROOT_DIR', $_SERVER['DOCUMENT_ROOT'].'/public/php-stanford-corenlp-adapter/');
+	define('CURLURL' , 'http://localhost:9001/');
+	define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Clemma%2Cner%22%2C%22outputFormat%22%3A%22text%22');
 
 
 /**
@@ -25,37 +25,40 @@
  * Demo usage
  */
 
-	// init class
+	// instantiate the class
 	$coreNLP 	= new coreNLP();
 	
-	// First sentence
-	$text1 		= 'The Golden Gate Bridge was designed by Joseph Strauss'; 	// showing off NER
-	$tree1 		 = $coreNLP->getTree($text1, true);							// true prints the tree
+	// First text
+	$text1 		= 'The Golden Gate Bridge was designed by Joseph Strauss, an Engineer. It is located in San Francisco'; 	// testing NER, regexNER
+	$coreNLP->getOutput($text1);
 	
-	$annotators1 		= $coreNLP->getTextAnnotators($text1);
-	$wordIDsAnnotators1 = $coreNLP->combineWordIDsAnnotators($tree1, $annotators1);
-	
-	// Optional: clear the tree ID's. Default is to autoincrement tree ID's unless a new CoreNLP object is made
-	//$coreNLP->clearID();
-		
-	// Second sentence
-	$text2 		= 'The quick brown fox jumped over the lazy dog';
-	$tree2 		= $coreNLP->getTree($text2);
 
+	// Optional: clear the tree ID's between pieces of text.
+	$coreNLP->clearID();
+		
+	// Second text
+	$text2 		= 'The quick brown fox jumped over the lazy dog';
+	$coreNLP->getOutput($text2);
 
 /**
  * Display result
  */
 
 	echo '<pre>';
-	headerText('Part-Of-Speech tree1');
-	print_r($tree1);
+	headerText('FIRST TEXT: Part-Of-Speech trees');
+	print_r($coreNLP->trees[0]);
+	print_r($coreNLP->trees[1]);
 	
-	headerText('Word IDs + Annotators for tree1: pay attention to the good NER info');
-	print_r($wordIDsAnnotators1);
+	headerText('FIRST TEXT: Annotators');
+	print_r($coreNLP->annotators[0]);
+	print_r($coreNLP->annotators[1]);
 	
-	headerText('Part-Of-Speech tree2: pay attention to the IDs resuming from tree1');
-	print_r($tree2);
+	headerText('FIRST TEXT: Word IDs are combined with annotators');
+	print_r($coreNLP->annotatorsWithTrees[0]);
+	print_r($coreNLP->annotatorsWithTrees[1]);
+	
+	headerText('SECOND TEXT: Part-Of-Speech tree: note how the IDs have been reset with clearID()');
+	print_r($coreNLP->trees[2]);
 
 	// helper function for a nice header
 	function headerText($header){
