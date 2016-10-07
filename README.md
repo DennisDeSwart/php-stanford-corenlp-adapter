@@ -18,10 +18,10 @@ Currently working on providing other features, mainly dependency parsing, relati
 - Download / install CoreNLP 3.6.0: http://stanfordnlp.github.io/CoreNLP/index.html#download<br />
 - How to use CoreNLP server: http://stanfordnlp.github.io/CoreNLP/corenlp-server.html <br />
 - Go to installation directory and start: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" <br />
-- If port 9000 is used by another program, use port 9001 <br /><br />
+- If port 9000 is used by another program, use port 9001
 2) PHP cURL<br /> 
 - The current version requires cURL. If you need to install, check here for more info: https://en.wikipedia.org/wiki/CURL<br />
-- If you don't want to use cURL, I suggest using either "wget" on Linux systems, or Composer/Guzzle. However, this requires recoding. <br /><br />
+- If you don't want to use cURL, I suggest using either "wget" on Linux systems, or Composer/Guzzle. However, this requires recoding.
 3) Change the configuration settings in "index.php" for your situation. <br />
 &nbsp;<br />
 
