@@ -31,50 +31,72 @@
         <h1>
 <a id="php-stanford-corenlp-adapter" class="anchor" href="#php-stanford-corenlp-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>php-stanford-corenlp-adapter</h1>
 
-<p>PHP adapter for Stanford CoreNLP tools<br><br></p>
+<p>PHP adapter for use with Stanford CoreNLP tools 3.6.0<br><br></p>
 
-<p><b>What does it do</b><br>
-It takes a Part-Of-Speech(POS) parse from CoreNLP and creates: <br></p>
+<p><b>Features:</b><br></p>
 
 <ul>
-<li>Part-Of-Speech Tree with depths, ID's and parentID's.<br>
+<li>The following annotators are used: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, parse<br>
 </li>
-<li>Annotator table with Text, Lemma and NER information<br>
-<br>
+<li>It creates Part-Of-Speech Trees with depth, ID's and parentID's.<br>
+</li>
+<li>It creates a sorted array for tokens, lemma, NER, regexNER<br>
+</li>
+<li>It combines the token array with the Tree IDs for further analysis<br>
+ <br>
 </li>
 </ul>
 
-<p><b>What does it not do</b><br>
-It does not do dependency parsing (yet)<br><br></p>
+<p><b>TODO list features:</b><br>
+Currently working on providing other features, mainly dependency parsing, relation and quote.<br>
+ <br></p>
 
-<p><b>Installation/ requirements</b><br>
-1) Stanford CoreNLP 3.6.0<br></p>
+<p><b>Installation/ requirements:</b><br></p>
+
+<p>1) Stanford CoreNLP 3.6.0<br></p>
 
 <ul>
 <li>Download / install CoreNLP 3.6.0: <a href="http://stanfordnlp.github.io/CoreNLP/index.html#download">http://stanfordnlp.github.io/CoreNLP/index.html#download</a><br>
 </li>
 <li>How to use CoreNLP server: <a href="http://stanfordnlp.github.io/CoreNLP/corenlp-server.html">http://stanfordnlp.github.io/CoreNLP/corenlp-server.html</a> <br>
 </li>
-<li>Go to installation directory and start: "java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" <br>
+<li>Go to installation directory and start:<br> 
+<code>
+"java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" 
+</code>
 </li>
-<li>If port 9000 is used by another program, use port 9001 <br>
+<li>If port 9000 is used by another program, use port 9001<br>
 </li>
 </ul>
 
-<p>2) PHP cURL: If you haven't got cURL installed: download here: <a href="https://curl.haxx.se/download.html">https://curl.haxx.se/download.html</a><br>
-3) Change the configuration settings in "index.php" for your situation. <br></p>
+<p>2) PHP cURL<br> </p>
 
-<p><b>Usage</b><br>
-See index.php for example usage</p>
+<ul>
+<li>The current version requires cURL. If you need to install, check here for more info: <a href="https://en.wikipedia.org/wiki/CURL">https://en.wikipedia.org/wiki/CURL</a><br>
+</li>
+<li>If you don't want to use cURL, I suggest using either "wget" on Linux systems, or Composer/Guzzle. However, this requires recoding.<br>
+</li>
+</ul>
 
-<p><b>Notes</b><br></p>
+<p>3) Change the configuration settings in "index.php" for your situation. <br>
+ <br></p>
+
+<p><b>How to use:</b><br>
+See index.php for example usage<br>
+ <br></p>
+
+<p><b>Notes:</b><br></p>
 
 <ul>
 <li>Tested on Windows and Linux<br>
 </li>
 <li>Tested on PHP 5.3 and PHP 7<br>
 </li>
-<li>It is designed to be used with Stanford CoreNLP, where CoreNLP is working as a server. However, it could easily be modified to take a parse from the Stanford online parser here: <a href="http://nlp.stanford.edu:8080/parser/index.jsp">http://nlp.stanford.edu:8080/parser/index.jsp</a>, since the POS parse is of the same format</li>
+<li>It is designed to be used with Stanford CoreNLP, where CoreNLP is working as a server.<br>
+</li>
+<li>I plan to make it compatible with the "Stanford Parser" package in the near future.<br>
+ <br>
+</li>
 </ul>
       </section>
       <footer>
