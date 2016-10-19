@@ -1,5 +1,5 @@
 {
-    "name": "DennisDeSwart/php-stanford-corenlp-adapter",
+    "name": "dennis-de-swart/php-stanford-corenlp-adapter",
     "type": "library",
     "description": "PHP adapter for use with Stanford CoreNLP tools 3.6.0",
     "keywords": ["stanford","nlp","ner","pos","parser"],
