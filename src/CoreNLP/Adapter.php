@@ -399,11 +399,9 @@ class Adapter {
 			// remove first and last character
 			$value = substr($value, 1, -1);
 			$valueArray = explode(' ', $value);
-			
+		
 			foreach ($valueArray as $value){
-				// remove first and last character
-				$valuePartArray	 = explode('=', $value);
-				$result[$key][$valuePartArray[0]] = $valuePartArray[1];
+				$result[$key] = explode('=', $value);
 			}
 		}
 		
