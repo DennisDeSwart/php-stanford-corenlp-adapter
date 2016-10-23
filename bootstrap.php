@@ -18,7 +18,6 @@
  */
 $classesDir = array (
 		__DIR__.'/src/CoreNLP/',
-		__DIR__.'/src/Tree/',
 );
 
 /**
