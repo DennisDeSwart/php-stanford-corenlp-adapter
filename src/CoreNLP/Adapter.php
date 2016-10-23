@@ -19,47 +19,39 @@ class Adapter {
 	 * - returns server output
 	 */
 	
-	public $serverOutput = array(); // container for serveroutput
+	public $serverRawOutput	= ''; // container for serveroutput
+	public $serverOutput	= ''; // container for decoded data
+	public $serverMemory	= ''; // keeps all the output
 	
 	public function getServerOutput(string $text){
 	
+		// create a shell command
 		$command = 'curl --data "'.$text.'" "'.CURLURL.'"?properties={"'.CURLPROPERTIES.'"}';
-		exec($command, $output, $return);
-	
-		if($return > 0){
-			if(function_exists('curl_strerror')){
-				$response = curl_strerror ( $return );
-				echo 'CURL error while sending a command to CoreNLP server: '.$response;
-				exit;
-			} else {
-				$response  = 'CURL error while sending command to CoreNLP server, number = '.$return.'<br />';
-				$response .= 'Check the error number online and correct the problem.';
-				echo $response;
-				exit;
-			}
-	
-		} else {
-			$this->serverOutput = $output;
+		
+		
+		try {
+				// do the shell command
+				$this->serverRawOutput = shell_exec($command);
+				
+			} catch (Exception $e) {
+				echo 'Caught exception: ',  $e->getMessage(), "\n";
 		}
-	
+		
+		// get object with data
+		$this->serverOutput	= json_decode($this->serverRawOutput);
+
+		// all done
 		return;
 	}
 	
-	
 /**
  * 
- * FORMATTING SERVER OUTPUT
+ * GET THE SERVER OUTPUT
  * 
  */
 
 	// keeps parsed trees
 	public $trees 		= array();
-	
-	// keeps parsed annotators
-	public $annotators	= array();
-	
-	// keeps parsed annotators with tree ID's
-	public $annotatorsWithTrees = array();
 	
 	/**
 	 * function getOutput
@@ -68,103 +60,20 @@ class Adapter {
 	 */
 	public function getOutput($text){
 		
-		$splitOutput = $this->getSplitOutput($text);
-		foreach($splitOutput as $partOfOutput){
-		
-			$tree 				= $this->getTree($partOfOutput); // true: prints the server raw output
- 			$annotator 			= $this->getAnnotators($partOfOutput);
- 			$annotatorsWithTree = $this->add_TreeIDs_To_Annotators($tree, $annotator);
-		
-			$this->trees[]			= $tree;
- 			$this->annotators[]		= $annotator;
-		
- 			$this->annotatorsWithTrees[] 	= $annotatorsWithTree;
-		}
-	}
-	
-	/**
-	 *  function GetOutputKeys
-	 *  
-	 *  - role: OutputSplitter helper
-	 * 	- Takes the server output and creates calculates start position of each sentence output.
-	 */
-	private function getOutputKeys(){
-		
-		$outputKeys 		= array();
-		$outputKeysCounter 	= 0;
-		
-		foreach($this->serverOutput as $key => $value){
-			
-			if(substr($value, 0, 10) == 'Sentence #'){
-			
-				// this is the start of a sentence output, unless this is part of of a sentence text itself.
-				if(array_key_exists($key-1, $this->serverOutput)){
-				
-					if(substr($this->serverOutput[$key-1], 0, 10) == 'Sentence #'){
-						
-						// this is the start of a sentence text and not the start of the sentence output
-						continue;
-					}
-					
-					// definitely the start of sentence output
-					// - start of output is the current key
-					// - finish of sentence output is the previous key: unless this is the start, but we already checked for that
-				
-					$outputKeysCounter++;
-					$outputKeys[$outputKeysCounter	]['start'] 	= $key;
-					$outputKeys[$outputKeysCounter-1]['finish'] = $key-1;
-				}
-			}
-		}
-		
-		// add start
-		$outputKeys[0]['start'] = 0;
-		
-		// add finish
-		$outputKeys[$outputKeysCounter]['finish'] = count($this->serverOutput)-1;
-		
-		// clean up for easier debugging
-		ksort($outputKeys);
-		
-		// return the result
-		return $outputKeys;
-	}
-	
-	/**
-	 * Function runSplitOutput
-	 * 
-	 * - role: split output into sentence parts
-	 * - Because most other functions are designed to handle sentence parts only
-	 */
-	
-	private function runSplitOutput(){
-		
-		// define a splitOutput
-		$splitOutput = array();
-		
-		// get outputKeys
-		$outputKeys = $this->getOutputKeys($this->serverOutput);
-		
-		foreach ($outputKeys as $key=>$value){
-			
-			$splitOutput[] = array_slice($this->serverOutput, $value['start'], $value['finish']-$value['start']);
-			
-		}
-		
-		return $splitOutput;
-	}
-	
-	/**
-	 * Function getSplitOutput
-	 * 
-	 * Splits the output to parts for each sentence
-	 */
-	public function getSplitOutput($text){
-	
+		// run the text through CoreNLP
 		$this->getServerOutput($text);
-		$splitOutput	= $this->runSplitOutput();
 		
-		return $splitOutput;
+		// cache result
+		$this->serverMemory[] = $this->serverOutput;
+		
+		foreach($this->serverOutput->sentences	as	$sentence){
+			$tree			= $this->getTree($sentence->parse); // gets one tree
+			$this->trees[]	= $tree; // collect all trees
+			
+		}
+				
+		// to get the trees just call $coreNLP->trees in the main program
+		return;
 	}
 	
 /**
@@ -179,30 +88,14 @@ class Adapter {
 	 *  input	: array $splitOutput
 	 *  output	: array Part-Of-Speech tree
 	 */
-	public function getTree(array $splitOutput){
+	public function getTree($sentence){
 						
-		$parsedText = $this->parseSplitOutput($splitOutput);	// process the output
-		$this->getSentenceTree($parsedText);  // creates tree from the slice
+		$this->getSentenceTree($sentence);  // creates tree
 		$result = $this->mem;
 		$this->resetSentenceTree();
 		
 		return $result;
 	}
-	
-	// process the output from the command line
-	public function parseSplitOutput(array $splitOutput){
-		
-		$treebankParse = false;
-		
-		$treebankParseStart  = array_search('(ROOT', $splitOutput);
-		$treebankParseFinish = array_search('', $splitOutput);
-		
-		$treebankParse = array_slice($splitOutput, $treebankParseStart, $treebankParseFinish-$treebankParseStart);
-		$treebankParse = implode(PHP_EOL, $treebankParse);
-		
-		return $treebankParse;
-	}
-
 	
 	// helper vars for tree traverse
 	public $mem;
@@ -281,7 +174,7 @@ class Adapter {
 				
 				
 				if($iterator->key() == 'pennTag'){
-					$this->mem[$this->memId]['pTag'] = $iterator->current();
+					$this->mem[$this->memId]['pennTreebankTag'] = $iterator->current();
 					$this->mem[$this->memId]['depth'] = $newDepth;
 				}
 					
@@ -357,57 +250,11 @@ class Adapter {
 	
 /**
  * 
- * 	TEXT, LEMMA, NER FUNCTIONS
+ * 	Helpful functions
  * 
  */
 	
-	private function find_key_by_substr(string $subString, array $array)
-	{
-		foreach ($array as $key => $value) {
-	
-			if(substr($value, 0, strlen($subString)) === $subString){
-	
-				return $key;
-			}
-		}
-		return false;
-	}
-	
-	// Returns group of arrays that contains annotation info on each word
-	public function getAnnotators(array $splitOutput){
-	
-		$result = $this->runAnnotators($splitOutput);	// 
-	
-		return $result;
-	}
-	
-	private function runAnnotators(array $parse){
-	
-		$AnnotatorsStart  		 = $this->find_key_by_substr('[Text', $parse);					// it should usually be 2 (= the third row)
-		$AnnotatorsFinishReverse = $this->find_key_by_substr('[Text', array_reverse($parse));	// to find the last key, reverse the array first then search	
-		$AnnotatorsFinish 		 = count($parse)-$AnnotatorsFinishReverse -$AnnotatorsStart;
-	
-		$Annotators = array_slice($parse, $AnnotatorsStart, $AnnotatorsFinish);
-		
-		$result = $this->processAnnotators($Annotators);
-		return $result;
-	}
-	
-	private function processAnnotators(array $Annotators){
-	
-		foreach ($Annotators as $key => $value){
-			// remove first and last character
-			$value = substr($value, 1, -1);
-			$valueArray = explode(' ', $value);
-		
-			foreach ($valueArray as $value){
-				$result[$key] = explode('=', $value);
-			}
-		}
-		
-		return $result;
-	}
-	
+	// Get an array with the tree ID's that contain real words
 	public function getWordIDs(array $tree){
 		
 		$result = array();
@@ -417,14 +264,6 @@ class Adapter {
 				$result[$wordId] = $node;
 			}
 		}
-		return $result;
-	}
-
-	public function add_TreeIDs_To_Annotators(array $tree, array $annotators){
-	
-		$wordIDs = array_keys($this->getWordIDs($tree)); // need the keys
-		$result  = array_combine($wordIDs, array_values($annotators));
-		
 		return $result;
 	}
 }
