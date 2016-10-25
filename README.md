@@ -101,6 +101,744 @@ If successful the following properties will be available:
  ```
 See index.php for a real world example
 <br /><br /> 
+
+
+***********************************************************************
+** The "Server Memory Object" (below) contains all the server output **
+***********************************************************************
+```
+Array
+(
+    [0] => stdClass Object
+        (
+            [sentences] => Array
+                (
+                    [0] => stdClass Object
+                        (
+                            [index] => 0
+                            [parse] => (ROOT
+  (S
+    (NP (DT The) (NNP Golden) (NNP Gate) (NNP Bridge))
+    (VP (VBD was)
+      (VP (VBN designed)
+        (PP (IN by)
+          (NP (NNP Joseph) (NNP Strauss)))))
+    (. .)))
+                            [basic-dependencies] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [dep] => ROOT
+                                            [governor] => 0
+                                            [governorGloss] => ROOT
+                                            [dependent] => 6
+                                            [dependentGloss] => designed
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [dep] => det
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 1
+                                            [dependentGloss] => The
+                                        )
+
+                                    [2] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 2
+                                            [dependentGloss] => Golden
+                                        )
+
+                                    [3] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 3
+                                            [dependentGloss] => Gate
+                                        )
+
+                                    [4] => stdClass Object
+                                        (
+                                            [dep] => nsubjpass
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 4
+                                            [dependentGloss] => Bridge
+                                        )
+
+                                    [5] => stdClass Object
+                                        (
+                                            [dep] => auxpass
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 5
+                                            [dependentGloss] => was
+                                        )
+
+                                    [6] => stdClass Object
+                                        (
+                                            [dep] => case
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 7
+                                            [dependentGloss] => by
+                                        )
+
+                                    [7] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 8
+                                            [dependentGloss] => Joseph
+                                        )
+
+                                    [8] => stdClass Object
+                                        (
+                                            [dep] => nmod
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 9
+                                            [dependentGloss] => Strauss
+                                        )
+
+                                    [9] => stdClass Object
+                                        (
+                                            [dep] => punct
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 10
+                                            [dependentGloss] => .
+                                        )
+
+                                )
+
+                            [collapsed-dependencies] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [dep] => ROOT
+                                            [governor] => 0
+                                            [governorGloss] => ROOT
+                                            [dependent] => 6
+                                            [dependentGloss] => designed
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [dep] => det
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 1
+                                            [dependentGloss] => The
+                                        )
+
+                                    [2] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 2
+                                            [dependentGloss] => Golden
+                                        )
+
+                                    [3] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 3
+                                            [dependentGloss] => Gate
+                                        )
+
+                                    [4] => stdClass Object
+                                        (
+                                            [dep] => nsubjpass
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 4
+                                            [dependentGloss] => Bridge
+                                        )
+
+                                    [5] => stdClass Object
+                                        (
+                                            [dep] => auxpass
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 5
+                                            [dependentGloss] => was
+                                        )
+
+                                    [6] => stdClass Object
+                                        (
+                                            [dep] => case
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 7
+                                            [dependentGloss] => by
+                                        )
+
+                                    [7] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 8
+                                            [dependentGloss] => Joseph
+                                        )
+
+                                    [8] => stdClass Object
+                                        (
+                                            [dep] => nmod:agent
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 9
+                                            [dependentGloss] => Strauss
+                                        )
+
+                                )
+
+                            [collapsed-ccprocessed-dependencies] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [dep] => ROOT
+                                            [governor] => 0
+                                            [governorGloss] => ROOT
+                                            [dependent] => 6
+                                            [dependentGloss] => designed
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [dep] => det
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 1
+                                            [dependentGloss] => The
+                                        )
+
+                                    [2] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 2
+                                            [dependentGloss] => Golden
+                                        )
+
+                                    [3] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 4
+                                            [governorGloss] => Bridge
+                                            [dependent] => 3
+                                            [dependentGloss] => Gate
+                                        )
+
+                                    [4] => stdClass Object
+                                        (
+                                            [dep] => nsubjpass
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 4
+                                            [dependentGloss] => Bridge
+                                        )
+
+                                    [5] => stdClass Object
+                                        (
+                                            [dep] => auxpass
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 5
+                                            [dependentGloss] => was
+                                        )
+
+                                    [6] => stdClass Object
+                                        (
+                                            [dep] => case
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 7
+                                            [dependentGloss] => by
+                                        )
+
+                                    [7] => stdClass Object
+                                        (
+                                            [dep] => compound
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 8
+                                            [dependentGloss] => Joseph
+                                        )
+
+                                    [8] => stdClass Object
+                                        (
+                                            [dep] => nmod:agent
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 9
+                                            [dependentGloss] => Strauss
+                                        )
+
+                                    [9] => stdClass Object
+                                        (
+                                            [dep] => punct
+                                            [governor] => 6
+                                            [governorGloss] => designed
+                                            [dependent] => 10
+                                            [dependentGloss] => .
+                                        )
+
+                                )
+
+                            [openie] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [subject] => Golden Gate Bridge
+                                            [subjectSpan] => Array
+                                                (
+                                                    [0] => 1
+                                                    [1] => 4
+                                                )
+
+                                            [relation] => was
+                                            [relationSpan] => Array
+                                                (
+                                                    [0] => 4
+                                                    [1] => 5
+                                                )
+
+                                            [object] => designed
+                                            [objectSpan] => Array
+                                                (
+                                                    [0] => 5
+                                                    [1] => 6
+                                                )
+
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [subject] => Golden Gate Bridge
+                                            [subjectSpan] => Array
+                                                (
+                                                    [0] => 1
+                                                    [1] => 4
+                                                )
+
+                                            [relation] => was designed by
+                                            [relationSpan] => Array
+                                                (
+                                                    [0] => 4
+                                                    [1] => 6
+                                                )
+
+                                            [object] => Joseph Strauss
+                                            [objectSpan] => Array
+                                                (
+                                                    [0] => 7
+                                                    [1] => 9
+                                                )
+
+                                        )
+
+                                )
+
+                            [tokens] => Array
+                                (
+                                    [0] => stdClass Object
+                                        (
+                                            [index] => 1
+                                            [word] => The
+                                            [originalText] => The
+                                            [lemma] => the
+                                            [characterOffsetBegin] => 0
+                                            [characterOffsetEnd] => 3
+                                            [pos] => DT
+                                            [ner] => O
+                                            [before] => 
+                                            [after] =>  
+                                        )
+
+                                    [1] => stdClass Object
+                                        (
+                                            [index] => 2
+                                            [word] => Golden
+                                            [originalText] => Golden
+                                            [lemma] => Golden
+                                            [characterOffsetBegin] => 4
+                                            [characterOffsetEnd] => 10
+                                            [pos] => NNP
+                                            [ner] => LOCATION
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [2] => stdClass Object
+                                        (
+                                            [index] => 3
+                                            [word] => Gate
+                                            [originalText] => Gate
+                                            [lemma] => Gate
+                                            [characterOffsetBegin] => 11
+                                            [characterOffsetEnd] => 15
+                                            [pos] => NNP
+                                            [ner] => LOCATION
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [3] => stdClass Object
+                                        (
+                                            [index] => 4
+                                            [word] => Bridge
+                                            [originalText] => Bridge
+                                            [lemma] => Bridge
+                                            [characterOffsetBegin] => 16
+                                            [characterOffsetEnd] => 22
+                                            [pos] => NNP
+                                            [ner] => LOCATION
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [4] => stdClass Object
+                                        (
+                                            [index] => 5
+                                            [word] => was
+                                            [originalText] => was
+                                            [lemma] => be
+                                            [characterOffsetBegin] => 23
+                                            [characterOffsetEnd] => 26
+                                            [pos] => VBD
+                                            [ner] => O
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [5] => stdClass Object
+                                        (
+                                            [index] => 6
+                                            [word] => designed
+                                            [originalText] => designed
+                                            [lemma] => design
+                                            [characterOffsetBegin] => 27
+                                            [characterOffsetEnd] => 35
+                                            [pos] => VBN
+                                            [ner] => O
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [6] => stdClass Object
+                                        (
+                                            [index] => 7
+                                            [word] => by
+                                            [originalText] => by
+                                            [lemma] => by
+                                            [characterOffsetBegin] => 36
+                                            [characterOffsetEnd] => 38
+                                            [pos] => IN
+                                            [ner] => O
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [7] => stdClass Object
+                                        (
+                                            [index] => 8
+                                            [word] => Joseph
+                                            [originalText] => Joseph
+                                            [lemma] => Joseph
+                                            [characterOffsetBegin] => 39
+                                            [characterOffsetEnd] => 45
+                                            [pos] => NNP
+                                            [ner] => PERSON
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [8] => stdClass Object
+                                        (
+                                            [index] => 9
+                                            [word] => Strauss
+                                            [originalText] => Strauss
+                                            [lemma] => Strauss
+                                            [characterOffsetBegin] => 46
+                                            [characterOffsetEnd] => 53
+                                            [pos] => NNP
+                                            [ner] => PERSON
+                                            [before] =>  
+                                            [after] => 
+                                        )
+
+                                    [9] => stdClass Object
+                                        (
+                                            [index] => 10
+                                            [word] => .
+                                            [originalText] => .
+                                            [lemma] => .
+                                            [characterOffsetBegin] => 53
+                                            [characterOffsetEnd] => 54
+                                            [pos] => .
+                                            [ner] => O
+                                            [before] => 
+                                            [after] => 
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+
+)
+ ```
+*************************
+** PART OF SPEECH TREE **
+*************************
+ ```
+Array
+(
+    [1] => Array
+        (
+            [parent] => 
+            [pennTreebankTag] => ROOT
+            [depth] => 0
+        )
+
+    [2] => Array
+        (
+            [parent] => 
+            [pennTreebankTag] => ROOT
+            [depth] => 0
+        )
+
+    [3] => Array
+        (
+            [parent] => 2
+            [pennTreebankTag] => S
+            [depth] => 2
+        )
+
+    [4] => Array
+        (
+            [parent] => 3
+            [pennTreebankTag] => NP
+            [depth] => 4
+        )
+
+    [5] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => DT
+            [depth] => 6
+            [word] => The
+        )
+
+    [6] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => NNP
+            [depth] => 6
+            [word] => Golden
+        )
+
+    [7] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => NNP
+            [depth] => 6
+            [word] => Gate
+        )
+
+    [8] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => NNP
+            [depth] => 6
+            [word] => Bridge
+        )
+
+    [9] => Array
+        (
+            [parent] => 3
+            [pennTreebankTag] => VP
+            [depth] => 4
+        )
+
+    [10] => Array
+        (
+            [parent] => 9
+            [pennTreebankTag] => VBD
+            [depth] => 6
+            [word] => was
+        )
+
+    [11] => Array
+        (
+            [parent] => 9
+            [pennTreebankTag] => VP
+            [depth] => 6
+        )
+
+    [12] => Array
+        (
+            [parent] => 11
+            [pennTreebankTag] => VBN
+            [depth] => 8
+            [word] => designed
+        )
+
+    [13] => Array
+        (
+            [parent] => 11
+            [pennTreebankTag] => PP
+            [depth] => 8
+        )
+
+    [14] => Array
+        (
+            [parent] => 13
+            [pennTreebankTag] => IN
+            [depth] => 10
+            [word] => by
+        )
+
+    [15] => Array
+        (
+            [parent] => 13
+            [pennTreebankTag] => NP
+            [depth] => 10
+        )
+
+    [16] => Array
+        (
+            [parent] => 15
+            [pennTreebankTag] => NNP
+            [depth] => 12
+            [word] => Joseph
+        )
+
+    [17] => Array
+        (
+            [parent] => 15
+            [pennTreebankTag] => NNP
+            [depth] => 12
+            [word] => Strauss
+        )
+
+    [18] => Array
+        (
+            [parent] => 3
+            [pennTreebankTag] => .
+            [depth] => 4
+            [word] => .
+        )
+
+)
+
+ ```
+***************************************************************************
+** EVERY TREE HAS UNIQUE IDs: this shows the Word-tree-IDs for this tree **
+***************************************************************************
+```
+
+
+Array
+(
+    [5] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => DT
+            [depth] => 6
+            [word] => The
+        )
+
+    [6] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => NNP
+            [depth] => 6
+            [word] => Golden
+        )
+
+    [7] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => NNP
+            [depth] => 6
+            [word] => Gate
+        )
+
+    [8] => Array
+        (
+            [parent] => 4
+            [pennTreebankTag] => NNP
+            [depth] => 6
+            [word] => Bridge
+        )
+
+    [10] => Array
+        (
+            [parent] => 9
+            [pennTreebankTag] => VBD
+            [depth] => 6
+            [word] => was
+        )
+
+    [12] => Array
+        (
+            [parent] => 11
+            [pennTreebankTag] => VBN
+            [depth] => 8
+            [word] => designed
+        )
+
+    [14] => Array
+        (
+            [parent] => 13
+            [pennTreebankTag] => IN
+            [depth] => 10
+            [word] => by
+        )
+
+    [16] => Array
+        (
+            [parent] => 15
+            [pennTreebankTag] => NNP
+            [depth] => 12
+            [word] => Joseph
+        )
+
+    [17] => Array
+        (
+            [parent] => 15
+            [pennTreebankTag] => NNP
+            [depth] => 12
+            [word] => Strauss
+        )
+
+    [18] => Array
+        (
+            [parent] => 3
+            [pennTreebankTag] => .
+            [depth] => 4
+            [word] => .
+        )
+
+)
+ ```
+
 ## Any questions?
 
 Please let me know. 
