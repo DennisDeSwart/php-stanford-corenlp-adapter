@@ -104,7 +104,7 @@ See index.php for a real world example
 
 
 ***********************************************************************
-** The "Server Memory Object" (below) contains all the server output **
+### Step 7a: The ServerMemory contains all the server data
 ***********************************************************************
 ```
 Array
@@ -604,7 +604,7 @@ Array
 )
  ```
 *************************
-** PART OF SPEECH TREE **
+### Step 7b: The Tree
 *************************
  ```
 Array
@@ -749,7 +749,7 @@ Array
 
  ```
 ***************************************************************************
-** EVERY TREE HAS UNIQUE IDs: this shows the Word-tree-IDs for this tree **
+### Part 7c: the WordIDs array, which contains just the words
 ***************************************************************************
 ```
 
