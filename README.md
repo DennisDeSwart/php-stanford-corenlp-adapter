@@ -2,7 +2,7 @@
 # PHP Stanford CoreNLP adapter
 
 PHP adapter for use with Stanford CoreNLP tools 3.6.0
-
+<br>
 # Features
 - PHP command line interface to the JAVA Stanford CoreNLP 3.6.0 server
 - The package gets the following annotator data: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, OpenIE
@@ -32,6 +32,7 @@ You can install the adapter by putting the following line into your composer.jso
 
 <br>
 ## Installation / Walkthrough
+<br>
 
 ## Step 1: make sure you have installed the Stanford CoreNLP 3.6.0: 
 ```
@@ -88,14 +89,15 @@ $coreNLP 	= new Adapter();
 ```
 
 Note that the first time that you process a text, the server takes about 20 to 30 seconds extra to load definitions. All other calls to the server after that will be much faster. Small texts are usually processed within seconds.
-<br>
+<br><br>
 ## Step 7: The results
 
 If successful the following properties will be available:
-- "$coreNLP->serverMemory"    : contains all of the server output
-- "$coreNLP->trees"           : contains processed flat trees. Each part of the tree is assigned an ID key
-- "$coreNLP->getWordIDs($tree): gets an array containing the words of that tree 
-
+```
+ $coreNLP->serverMemory;      //contains all of the server output
+ $coreNLP->trees;             //contains processed flat trees. Each part of the tree is assigned an ID key
+ $coreNLP->getWordIDs($tree); //gets an array containing the words of that tree 
+ ```
 See index.php for a real world example
 <br>
 ## Any questions?
