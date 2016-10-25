@@ -1,44 +1,107 @@
-# php-stanford-corenlp-adapter
-PHP adapter for use with Stanford CoreNLP tools 3.6.0<br /><br />
 
+# PHP Stanford CoreNLP adapter
 
-<b>Features:</b><br />
-- The following annotators are used: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, parse<br />
-- It creates Part-Of-Speech Trees with depth, ID's and parentID's.<br />
-- It creates a sorted array for tokens, lemma, NER, regexNER<br />
-- It combines the token array with the Tree IDs for further analysis<br />
-&nbsp;<br />
+PHP adapter for use with Stanford CoreNLP tools 3.6.0
 
-<b>TODO list features:</b><br />
-Currently working on providing other features, mainly dependency parsing, relation and quote.<br />
-&nbsp;<br />
+# Features
+- PHP command line interface to the JAVA Stanford CoreNLP 3.6.0 server
+- The package gets the following annotator data: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, OpenIE
+- From the results, the package creates Part-Of-Speech Trees with depth, ID's and parentID's.
 
-<b>Installation/ requirements:</b><br />
+## Requirements
 
-1) Stanford CoreNLP 3.6.0<br />
-- Download / install CoreNLP 3.6.0: http://stanfordnlp.github.io/CoreNLP/index.html#download<br />
-- How to use CoreNLP server: http://stanfordnlp.github.io/CoreNLP/corenlp-server.html <br />
-- Go to installation directory and start:<br /> 
-<code>
-"java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" 
-</code>
-- If port 9000 is used by another program, use port 9001<br />
+Requires:
+- PHP 5.3 or higher: it also works on PHP 7
+- Windows or Linux
+- cURL
+```
+  https://en.wikipedia.org/wiki/CURL
+```
 
-2) PHP cURL<br /> 
-- The current version requires cURL. If you need to install, check here for more info: https://en.wikipedia.org/wiki/CURL<br />
-- If you don't want to use cURL, I suggest using either "wget" on Linux systems, or Composer/Guzzle. However, this requires recoding.<br />
+### Composer
 
-3) Change the configuration settings in "index.php" for your situation. <br />
-&nbsp;<br />
+You can install the adapter by putting the following line into your composer.json
 
-<b>How to use:</b><br />
-See index.php for example usage<br />
-&nbsp;<br />
+```
+    {
+        "require": {
+            "dennis-de-swart/php-stanford-corenlp-adapter": "*"
+        }
+    }
+```
 
-<b>Notes:</b><br />
-- Tested on Windows and Linux<br />
-- Tested on PHP 5.3 and PHP 7<br />
-- It is designed to be used with Stanford CoreNLP, where CoreNLP is working as a server.<br />
-- I plan to make it compatible with the "Stanford Parser" package in the near future.<br />
-&nbsp;<br />
+## Installation / Walkthrough
+
+First, make sure you have installed the Stanford CoreNLP 3.6.0: 
+```
+http://stanfordnlp.github.io/CoreNLP/index.html#download
+```
+
+Step 2: 
+The "Adapter" class needs to know your install configuration. An example of the configuration is included in the "bootstrap.php" file. Example:
+
+```
+define('CURLURL' , 'http://localhost:9000/');
+define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Clemma%2Copenie%2Cner%22%2C%22prettyPrint%22%3A%22true%22');
+
+require __DIR__.'/vendor/autoload.php';
+```
+So this is:
+- The URL of the CoreNLP server. By default localhost:9000
+- The annotator properties: don't change these unless you really need to.
+- Starting the composer autoloader
+
+Now, you can either:
+a) include the above code into your main program OR
+b) include the "bootstrap.php" file into your main program:
+```
+require_once __DIR__.'/bootstrap.php';
+```
+
+Step 3: Start the CoreNLP serve from the command line. You can change the port if port 9000 is busy.
+```
+java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000
+```
+
+Step 4: Test if the server has started by surfing to it's URL
+```
+http://localhost:9000/
+```
+When you surf to this URL, you should see the CoreNLP GUI. If you have problems with installation you can check the manual:
+```
+http://stanfordnlp.github.io/CoreNLP/corenlp-server.html
+```
+
+Step 5: Instantiate the adapter:
+```
+$coreNLP 	= new Adapter();
+```
+
+Step 6: To process a text, call the "getOutput" method:
+```
+ $text         = 'The Golden Gate Bridge was designed by Joseph Strauss.'; 
+ $coreNLP->getOutput($text);
+```
+
+Note that the first time that you process a text, the server takes about 20 to 30 seconds extra to load definitions. All other calls to the server after that will be much faster. Small texts are usually processed within seconds.
+
+Step 7: The results
+
+If successful the following properties will be available:
+- "$coreNLP->serverMemory"    : contains all of the server output
+- "$coreNLP->trees"           : contains processed flat trees. Each part of the tree is assigned an ID key
+- "$coreNLP->getWordIDs($tree): gets an array containing the words of that tree 
+
+See index.php for a real world example
+
+## Any questions?
+
+Please let me know. 
+
+## Credits
+
+Some functions are forked from this "Stanford parser" package:
+```
+ https://github.com/agentile/PHP-Stanford-NLP
+```
 
