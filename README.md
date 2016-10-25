@@ -18,7 +18,7 @@ PHP adapter for use with Stanford CoreNLP tools 3.6.0
 ```
 <br />
 
-### Composer
+## Composer
 
 You can install the adapter by putting the following line into your composer.json
 
@@ -31,7 +31,7 @@ You can install the adapter by putting the following line into your composer.jso
 ```
 
 <br />
-## Installation / Walkthrough
+# Installation / Walkthrough
 <br />
 
 ## Step 1: make sure you have installed the Stanford CoreNLP 3.6.0: 
@@ -51,10 +51,10 @@ require __DIR__.'/vendor/autoload.php';
 So this is:
 - The URL of the CoreNLP server. By default localhost:9000
 - The annotator properties: don't change these unless you really need to.
-- Starting the composer autoloader
+- Starting the composer autoloader<br />
 
-Now, you can either:
-a) include the above code into your main program OR
+Now, you can either:<br />
+a) include the above code into your main program OR<br />
 b) include the "bootstrap.php" file into your main program:
 ```
 require_once __DIR__.'/bootstrap.php';
