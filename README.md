@@ -3,11 +3,12 @@
 
 PHP adapter for use with Stanford CoreNLP tools 3.6.0
 <br />
-# Features
+## Features
 - PHP command line interface to the JAVA Stanford CoreNLP 3.6.0 server
 - The package gets the following annotator data: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, OpenIE
 - From the results, the package creates Part-Of-Speech Trees with depth, ID's and parentID's.
 <br />
+
 ## Requirements
 - PHP 5.3 or higher: it also works on PHP 7
 - Windows or Linux
