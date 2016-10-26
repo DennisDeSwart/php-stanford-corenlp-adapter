@@ -104,16 +104,14 @@ See index.php for a real world example
 
 
 ***********************************************************************
-### Step 7a: The ServerMemory contains all the server data
+### Diagram 7a: The ServerMemory contains all the server data
 ***********************************************************************
 ```
-Array
-(
-    [0] => stdClass Object
+[1] => Array
         (
             [sentences] => Array
                 (
-                    [0] => stdClass Object
+                    [0] => Array
                         (
                             [index] => 0
                             [parse] => (ROOT
@@ -122,11 +120,14 @@ Array
     (VP (VBD was)
       (VP (VBN designed)
         (PP (IN by)
-          (NP (NNP Joseph) (NNP Strauss)))))
+          (NP
+            (NP (NNP Joseph) (NNP Strauss))
+            (, ,)
+            (NP (DT an) (NN Engineer))))))
     (. .)))
                             [basic-dependencies] => Array
                                 (
-                                    [0] => stdClass Object
+                                    [0] => Array
                                         (
                                             [dep] => ROOT
                                             [governor] => 0
@@ -135,7 +136,7 @@ Array
                                             [dependentGloss] => designed
                                         )
 
-                                    [1] => stdClass Object
+                                    [1] => Array
                                         (
                                             [dep] => det
                                             [governor] => 4
@@ -144,7 +145,7 @@ Array
                                             [dependentGloss] => The
                                         )
 
-                                    [2] => stdClass Object
+                                    [2] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 4
@@ -153,7 +154,7 @@ Array
                                             [dependentGloss] => Golden
                                         )
 
-                                    [3] => stdClass Object
+                                    [3] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 4
@@ -162,7 +163,7 @@ Array
                                             [dependentGloss] => Gate
                                         )
 
-                                    [4] => stdClass Object
+                                    [4] => Array
                                         (
                                             [dep] => nsubjpass
                                             [governor] => 6
@@ -171,7 +172,7 @@ Array
                                             [dependentGloss] => Bridge
                                         )
 
-                                    [5] => stdClass Object
+                                    [5] => Array
                                         (
                                             [dep] => auxpass
                                             [governor] => 6
@@ -180,7 +181,7 @@ Array
                                             [dependentGloss] => was
                                         )
 
-                                    [6] => stdClass Object
+                                    [6] => Array
                                         (
                                             [dep] => case
                                             [governor] => 9
@@ -189,7 +190,7 @@ Array
                                             [dependentGloss] => by
                                         )
 
-                                    [7] => stdClass Object
+                                    [7] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 9
@@ -198,7 +199,7 @@ Array
                                             [dependentGloss] => Joseph
                                         )
 
-                                    [8] => stdClass Object
+                                    [8] => Array
                                         (
                                             [dep] => nmod
                                             [governor] => 6
@@ -207,12 +208,39 @@ Array
                                             [dependentGloss] => Strauss
                                         )
 
-                                    [9] => stdClass Object
+                                    [9] => Array
+                                        (
+                                            [dep] => punct
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 10
+                                            [dependentGloss] => ,
+                                        )
+
+                                    [10] => Array
+                                        (
+                                            [dep] => det
+                                            [governor] => 12
+                                            [governorGloss] => Engineer
+                                            [dependent] => 11
+                                            [dependentGloss] => an
+                                        )
+
+                                    [11] => Array
+                                        (
+                                            [dep] => appos
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 12
+                                            [dependentGloss] => Engineer
+                                        )
+
+                                    [12] => Array
                                         (
                                             [dep] => punct
                                             [governor] => 6
                                             [governorGloss] => designed
-                                            [dependent] => 10
+                                            [dependent] => 13
                                             [dependentGloss] => .
                                         )
 
@@ -220,7 +248,7 @@ Array
 
                             [collapsed-dependencies] => Array
                                 (
-                                    [0] => stdClass Object
+                                    [0] => Array
                                         (
                                             [dep] => ROOT
                                             [governor] => 0
@@ -229,7 +257,7 @@ Array
                                             [dependentGloss] => designed
                                         )
 
-                                    [1] => stdClass Object
+                                    [1] => Array
                                         (
                                             [dep] => det
                                             [governor] => 4
@@ -238,7 +266,7 @@ Array
                                             [dependentGloss] => The
                                         )
 
-                                    [2] => stdClass Object
+                                    [2] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 4
@@ -247,7 +275,7 @@ Array
                                             [dependentGloss] => Golden
                                         )
 
-                                    [3] => stdClass Object
+                                    [3] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 4
@@ -256,7 +284,7 @@ Array
                                             [dependentGloss] => Gate
                                         )
 
-                                    [4] => stdClass Object
+                                    [4] => Array
                                         (
                                             [dep] => nsubjpass
                                             [governor] => 6
@@ -265,7 +293,7 @@ Array
                                             [dependentGloss] => Bridge
                                         )
 
-                                    [5] => stdClass Object
+                                    [5] => Array
                                         (
                                             [dep] => auxpass
                                             [governor] => 6
@@ -274,7 +302,7 @@ Array
                                             [dependentGloss] => was
                                         )
 
-                                    [6] => stdClass Object
+                                    [6] => Array
                                         (
                                             [dep] => case
                                             [governor] => 9
@@ -283,7 +311,7 @@ Array
                                             [dependentGloss] => by
                                         )
 
-                                    [7] => stdClass Object
+                                    [7] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 9
@@ -292,20 +320,38 @@ Array
                                             [dependentGloss] => Joseph
                                         )
 
-                                    [8] => stdClass Object
+                                    [8] => Array
                                         (
                                             [dep] => nmod:agent
                                             [governor] => 6
                                             [governorGloss] => designed
                                             [dependent] => 9
                                             [dependentGloss] => Strauss
+                                        )
+
+                                    [9] => Array
+                                        (
+                                            [dep] => det
+                                            [governor] => 12
+                                            [governorGloss] => Engineer
+                                            [dependent] => 11
+                                            [dependentGloss] => an
+                                        )
+
+                                    [10] => Array
+                                        (
+                                            [dep] => appos
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 12
+                                            [dependentGloss] => Engineer
                                         )
 
                                 )
 
                             [collapsed-ccprocessed-dependencies] => Array
                                 (
-                                    [0] => stdClass Object
+                                    [0] => Array
                                         (
                                             [dep] => ROOT
                                             [governor] => 0
@@ -314,7 +360,7 @@ Array
                                             [dependentGloss] => designed
                                         )
 
-                                    [1] => stdClass Object
+                                    [1] => Array
                                         (
                                             [dep] => det
                                             [governor] => 4
@@ -323,7 +369,7 @@ Array
                                             [dependentGloss] => The
                                         )
 
-                                    [2] => stdClass Object
+                                    [2] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 4
@@ -332,7 +378,7 @@ Array
                                             [dependentGloss] => Golden
                                         )
 
-                                    [3] => stdClass Object
+                                    [3] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 4
@@ -341,7 +387,7 @@ Array
                                             [dependentGloss] => Gate
                                         )
 
-                                    [4] => stdClass Object
+                                    [4] => Array
                                         (
                                             [dep] => nsubjpass
                                             [governor] => 6
@@ -350,7 +396,7 @@ Array
                                             [dependentGloss] => Bridge
                                         )
 
-                                    [5] => stdClass Object
+                                    [5] => Array
                                         (
                                             [dep] => auxpass
                                             [governor] => 6
@@ -359,7 +405,7 @@ Array
                                             [dependentGloss] => was
                                         )
 
-                                    [6] => stdClass Object
+                                    [6] => Array
                                         (
                                             [dep] => case
                                             [governor] => 9
@@ -368,7 +414,7 @@ Array
                                             [dependentGloss] => by
                                         )
 
-                                    [7] => stdClass Object
+                                    [7] => Array
                                         (
                                             [dep] => compound
                                             [governor] => 9
@@ -377,7 +423,7 @@ Array
                                             [dependentGloss] => Joseph
                                         )
 
-                                    [8] => stdClass Object
+                                    [8] => Array
                                         (
                                             [dep] => nmod:agent
                                             [governor] => 6
@@ -386,12 +432,39 @@ Array
                                             [dependentGloss] => Strauss
                                         )
 
-                                    [9] => stdClass Object
+                                    [9] => Array
+                                        (
+                                            [dep] => punct
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 10
+                                            [dependentGloss] => ,
+                                        )
+
+                                    [10] => Array
+                                        (
+                                            [dep] => det
+                                            [governor] => 12
+                                            [governorGloss] => Engineer
+                                            [dependent] => 11
+                                            [dependentGloss] => an
+                                        )
+
+                                    [11] => Array
+                                        (
+                                            [dep] => appos
+                                            [governor] => 9
+                                            [governorGloss] => Strauss
+                                            [dependent] => 12
+                                            [dependentGloss] => Engineer
+                                        )
+
+                                    [12] => Array
                                         (
                                             [dep] => punct
                                             [governor] => 6
                                             [governorGloss] => designed
-                                            [dependent] => 10
+                                            [dependent] => 13
                                             [dependentGloss] => .
                                         )
 
@@ -399,7 +472,7 @@ Array
 
                             [openie] => Array
                                 (
-                                    [0] => stdClass Object
+                                    [0] => Array
                                         (
                                             [subject] => Golden Gate Bridge
                                             [subjectSpan] => Array
@@ -424,7 +497,32 @@ Array
 
                                         )
 
-                                    [1] => stdClass Object
+                                    [1] => Array
+                                        (
+                                            [subject] => Golden Gate Bridge
+                                            [subjectSpan] => Array
+                                                (
+                                                    [0] => 1
+                                                    [1] => 4
+                                                )
+
+                                            [relation] => was designed by
+                                            [relationSpan] => Array
+                                                (
+                                                    [0] => 4
+                                                    [1] => 6
+                                                )
+
+                                            [object] => Engineer
+                                            [objectSpan] => Array
+                                                (
+                                                    [0] => 11
+                                                    [1] => 12
+                                                )
+
+                                        )
+
+                                    [2] => Array
                                         (
                                             [subject] => Golden Gate Bridge
                                             [subjectSpan] => Array
@@ -453,7 +551,7 @@ Array
 
                             [tokens] => Array
                                 (
-                                    [0] => stdClass Object
+                                    [0] => Array
                                         (
                                             [index] => 1
                                             [word] => The
@@ -467,7 +565,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [1] => stdClass Object
+                                    [1] => Array
                                         (
                                             [index] => 2
                                             [word] => Golden
@@ -481,7 +579,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [2] => stdClass Object
+                                    [2] => Array
                                         (
                                             [index] => 3
                                             [word] => Gate
@@ -495,7 +593,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [3] => stdClass Object
+                                    [3] => Array
                                         (
                                             [index] => 4
                                             [word] => Bridge
@@ -509,7 +607,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [4] => stdClass Object
+                                    [4] => Array
                                         (
                                             [index] => 5
                                             [word] => was
@@ -523,7 +621,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [5] => stdClass Object
+                                    [5] => Array
                                         (
                                             [index] => 6
                                             [word] => designed
@@ -537,7 +635,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [6] => stdClass Object
+                                    [6] => Array
                                         (
                                             [index] => 7
                                             [word] => by
@@ -551,7 +649,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [7] => stdClass Object
+                                    [7] => Array
                                         (
                                             [index] => 8
                                             [word] => Joseph
@@ -565,7 +663,7 @@ Array
                                             [after] =>  
                                         )
 
-                                    [8] => stdClass Object
+                                    [8] => Array
                                         (
                                             [index] => 9
                                             [word] => Strauss
@@ -579,14 +677,56 @@ Array
                                             [after] => 
                                         )
 
-                                    [9] => stdClass Object
+                                    [9] => Array
                                         (
                                             [index] => 10
+                                            [word] => ,
+                                            [originalText] => ,
+                                            [lemma] => ,
+                                            [characterOffsetBegin] => 53
+                                            [characterOffsetEnd] => 54
+                                            [pos] => ,
+                                            [ner] => O
+                                            [before] => 
+                                            [after] =>  
+                                        )
+
+                                    [10] => Array
+                                        (
+                                            [index] => 11
+                                            [word] => an
+                                            [originalText] => an
+                                            [lemma] => a
+                                            [characterOffsetBegin] => 55
+                                            [characterOffsetEnd] => 57
+                                            [pos] => DT
+                                            [ner] => O
+                                            [before] =>  
+                                            [after] =>  
+                                        )
+
+                                    [11] => Array
+                                        (
+                                            [index] => 12
+                                            [word] => Engineer
+                                            [originalText] => Engineer
+                                            [lemma] => engineer
+                                            [characterOffsetBegin] => 58
+                                            [characterOffsetEnd] => 66
+                                            [pos] => NN
+                                            [ner] => TITLE
+                                            [before] =>  
+                                            [after] => 
+                                        )
+
+                                    [12] => Array
+                                        (
+                                            [index] => 13
                                             [word] => .
                                             [originalText] => .
                                             [lemma] => .
-                                            [characterOffsetBegin] => 53
-                                            [characterOffsetEnd] => 54
+                                            [characterOffsetBegin] => 66
+                                            [characterOffsetEnd] => 67
                                             [pos] => .
                                             [ner] => O
                                             [before] => 
@@ -600,25 +740,23 @@ Array
                 )
 
         )
-
-)
  ```
-*************************
-### Step 7b: The Tree
-*************************
+********************************
+### Diagram 7b: Tree With Tokens
+********************************
  ```
 Array
 (
     [1] => Array
         (
-            [parent] => 
+            [parent] => 0
             [pennTreebankTag] => ROOT
             [depth] => 0
         )
 
     [2] => Array
         (
-            [parent] => 
+            [parent] => 0
             [pennTreebankTag] => ROOT
             [depth] => 0
         )
@@ -643,6 +781,15 @@ Array
             [pennTreebankTag] => DT
             [depth] => 6
             [word] => The
+            [index] => 1
+            [originalText] => The
+            [lemma] => the
+            [characterOffsetBegin] => 0
+            [characterOffsetEnd] => 3
+            [pos] => DT
+            [ner] => O
+            [before] => 
+            [after] =>  
         )
 
     [6] => Array
@@ -651,6 +798,15 @@ Array
             [pennTreebankTag] => NNP
             [depth] => 6
             [word] => Golden
+            [index] => 2
+            [originalText] => Golden
+            [lemma] => Golden
+            [characterOffsetBegin] => 4
+            [characterOffsetEnd] => 10
+            [pos] => NNP
+            [ner] => LOCATION
+            [before] =>  
+            [after] =>  
         )
 
     [7] => Array
@@ -659,6 +815,15 @@ Array
             [pennTreebankTag] => NNP
             [depth] => 6
             [word] => Gate
+            [index] => 3
+            [originalText] => Gate
+            [lemma] => Gate
+            [characterOffsetBegin] => 11
+            [characterOffsetEnd] => 15
+            [pos] => NNP
+            [ner] => LOCATION
+            [before] =>  
+            [after] =>  
         )
 
     [8] => Array
@@ -667,6 +832,15 @@ Array
             [pennTreebankTag] => NNP
             [depth] => 6
             [word] => Bridge
+            [index] => 4
+            [originalText] => Bridge
+            [lemma] => Bridge
+            [characterOffsetBegin] => 16
+            [characterOffsetEnd] => 22
+            [pos] => NNP
+            [ner] => LOCATION
+            [before] =>  
+            [after] =>  
         )
 
     [9] => Array
@@ -682,6 +856,15 @@ Array
             [pennTreebankTag] => VBD
             [depth] => 6
             [word] => was
+            [index] => 5
+            [originalText] => was
+            [lemma] => be
+            [characterOffsetBegin] => 23
+            [characterOffsetEnd] => 26
+            [pos] => VBD
+            [ner] => O
+            [before] =>  
+            [after] =>  
         )
 
     [11] => Array
@@ -697,6 +880,15 @@ Array
             [pennTreebankTag] => VBN
             [depth] => 8
             [word] => designed
+            [index] => 6
+            [originalText] => designed
+            [lemma] => design
+            [characterOffsetBegin] => 27
+            [characterOffsetEnd] => 35
+            [pos] => VBN
+            [ner] => O
+            [before] =>  
+            [after] =>  
         )
 
     [13] => Array
@@ -712,6 +904,15 @@ Array
             [pennTreebankTag] => IN
             [depth] => 10
             [word] => by
+            [index] => 7
+            [originalText] => by
+            [lemma] => by
+            [characterOffsetBegin] => 36
+            [characterOffsetEnd] => 38
+            [pos] => IN
+            [ner] => O
+            [before] =>  
+            [after] =>  
         )
 
     [15] => Array
@@ -724,36 +925,126 @@ Array
     [16] => Array
         (
             [parent] => 15
-            [pennTreebankTag] => NNP
+            [pennTreebankTag] => NP
             [depth] => 12
-            [word] => Joseph
         )
 
     [17] => Array
         (
-            [parent] => 15
+            [parent] => 16
             [pennTreebankTag] => NNP
-            [depth] => 12
-            [word] => Strauss
+            [depth] => 14
+            [word] => Joseph
+            [index] => 8
+            [originalText] => Joseph
+            [lemma] => Joseph
+            [characterOffsetBegin] => 39
+            [characterOffsetEnd] => 45
+            [pos] => NNP
+            [ner] => PERSON
+            [before] =>  
+            [after] =>  
         )
 
     [18] => Array
+        (
+            [parent] => 16
+            [pennTreebankTag] => NNP
+            [depth] => 14
+            [word] => Strauss
+            [index] => 9
+            [originalText] => Strauss
+            [lemma] => Strauss
+            [characterOffsetBegin] => 46
+            [characterOffsetEnd] => 53
+            [pos] => NNP
+            [ner] => PERSON
+            [before] =>  
+            [after] => 
+        )
+
+    [19] => Array
+        (
+            [parent] => 15
+            [pennTreebankTag] => ,
+            [depth] => 12
+            [word] => ,
+            [index] => 10
+            [originalText] => ,
+            [lemma] => ,
+            [characterOffsetBegin] => 53
+            [characterOffsetEnd] => 54
+            [pos] => ,
+            [ner] => O
+            [before] => 
+            [after] =>  
+        )
+
+    [20] => Array
+        (
+            [parent] => 10
+            [pennTreebankTag] => NP
+            [depth] => 12
+        )
+
+    [21] => Array
+        (
+            [parent] => 20
+            [pennTreebankTag] => DT
+            [depth] => 14
+            [word] => an
+            [index] => 11
+            [originalText] => an
+            [lemma] => a
+            [characterOffsetBegin] => 55
+            [characterOffsetEnd] => 57
+            [pos] => DT
+            [ner] => O
+            [before] =>  
+            [after] =>  
+        )
+
+    [22] => Array
+        (
+            [parent] => 20
+            [pennTreebankTag] => NN
+            [depth] => 14
+            [word] => Engineer
+            [index] => 12
+            [originalText] => Engineer
+            [lemma] => engineer
+            [characterOffsetBegin] => 58
+            [characterOffsetEnd] => 66
+            [pos] => NN
+            [ner] => TITLE
+            [before] =>  
+            [after] => 
+        )
+
+    [23] => Array
         (
             [parent] => 3
             [pennTreebankTag] => .
             [depth] => 4
             [word] => .
+            [index] => 13
+            [originalText] => .
+            [lemma] => .
+            [characterOffsetBegin] => 66
+            [characterOffsetEnd] => 67
+            [pos] => .
+            [ner] => O
+            [before] => 
+            [after] => 
         )
 
 )
 
  ```
 ***************************************************************************
-### Part 7c: the Word ID array
+### Diagram 7c: the Word ID array
 ***************************************************************************
 ```
-
-
 Array
 (
     [5] => Array
@@ -762,6 +1053,15 @@ Array
             [pennTreebankTag] => DT
             [depth] => 6
             [word] => The
+            [index] => 1
+            [originalText] => The
+            [lemma] => the
+            [characterOffsetBegin] => 0
+            [characterOffsetEnd] => 3
+            [pos] => DT
+            [ner] => O
+            [before] => 
+            [after] =>  
         )
 
     [6] => Array
@@ -770,6 +1070,15 @@ Array
             [pennTreebankTag] => NNP
             [depth] => 6
             [word] => Golden
+            [index] => 2
+            [originalText] => Golden
+            [lemma] => Golden
+            [characterOffsetBegin] => 4
+            [characterOffsetEnd] => 10
+            [pos] => NNP
+            [ner] => LOCATION
+            [before] =>  
+            [after] =>  
         )
 
     [7] => Array
@@ -778,6 +1087,15 @@ Array
             [pennTreebankTag] => NNP
             [depth] => 6
             [word] => Gate
+            [index] => 3
+            [originalText] => Gate
+            [lemma] => Gate
+            [characterOffsetBegin] => 11
+            [characterOffsetEnd] => 15
+            [pos] => NNP
+            [ner] => LOCATION
+            [before] =>  
+            [after] =>  
         )
 
     [8] => Array
@@ -786,6 +1104,15 @@ Array
             [pennTreebankTag] => NNP
             [depth] => 6
             [word] => Bridge
+            [index] => 4
+            [originalText] => Bridge
+            [lemma] => Bridge
+            [characterOffsetBegin] => 16
+            [characterOffsetEnd] => 22
+            [pos] => NNP
+            [ner] => LOCATION
+            [before] =>  
+            [after] =>  
         )
 
     [10] => Array
@@ -794,6 +1121,15 @@ Array
             [pennTreebankTag] => VBD
             [depth] => 6
             [word] => was
+            [index] => 5
+            [originalText] => was
+            [lemma] => be
+            [characterOffsetBegin] => 23
+            [characterOffsetEnd] => 26
+            [pos] => VBD
+            [ner] => O
+            [before] =>  
+            [after] =>  
         )
 
     [12] => Array
@@ -802,6 +1138,15 @@ Array
             [pennTreebankTag] => VBN
             [depth] => 8
             [word] => designed
+            [index] => 6
+            [originalText] => designed
+            [lemma] => design
+            [characterOffsetBegin] => 27
+            [characterOffsetEnd] => 35
+            [pos] => VBN
+            [ner] => O
+            [before] =>  
+            [after] =>  
         )
 
     [14] => Array
@@ -810,30 +1155,117 @@ Array
             [pennTreebankTag] => IN
             [depth] => 10
             [word] => by
-        )
-
-    [16] => Array
-        (
-            [parent] => 15
-            [pennTreebankTag] => NNP
-            [depth] => 12
-            [word] => Joseph
+            [index] => 7
+            [originalText] => by
+            [lemma] => by
+            [characterOffsetBegin] => 36
+            [characterOffsetEnd] => 38
+            [pos] => IN
+            [ner] => O
+            [before] =>  
+            [after] =>  
         )
 
     [17] => Array
         (
-            [parent] => 15
+            [parent] => 16
             [pennTreebankTag] => NNP
-            [depth] => 12
-            [word] => Strauss
+            [depth] => 14
+            [word] => Joseph
+            [index] => 8
+            [originalText] => Joseph
+            [lemma] => Joseph
+            [characterOffsetBegin] => 39
+            [characterOffsetEnd] => 45
+            [pos] => NNP
+            [ner] => PERSON
+            [before] =>  
+            [after] =>  
         )
 
     [18] => Array
+        (
+            [parent] => 16
+            [pennTreebankTag] => NNP
+            [depth] => 14
+            [word] => Strauss
+            [index] => 9
+            [originalText] => Strauss
+            [lemma] => Strauss
+            [characterOffsetBegin] => 46
+            [characterOffsetEnd] => 53
+            [pos] => NNP
+            [ner] => PERSON
+            [before] =>  
+            [after] => 
+        )
+
+    [19] => Array
+        (
+            [parent] => 15
+            [pennTreebankTag] => ,
+            [depth] => 12
+            [word] => ,
+            [index] => 10
+            [originalText] => ,
+            [lemma] => ,
+            [characterOffsetBegin] => 53
+            [characterOffsetEnd] => 54
+            [pos] => ,
+            [ner] => O
+            [before] => 
+            [after] =>  
+        )
+
+    [21] => Array
+        (
+            [parent] => 20
+            [pennTreebankTag] => DT
+            [depth] => 14
+            [word] => an
+            [index] => 11
+            [originalText] => an
+            [lemma] => a
+            [characterOffsetBegin] => 55
+            [characterOffsetEnd] => 57
+            [pos] => DT
+            [ner] => O
+            [before] =>  
+            [after] =>  
+        )
+
+    [22] => Array
+        (
+            [parent] => 20
+            [pennTreebankTag] => NN
+            [depth] => 14
+            [word] => Engineer
+            [index] => 12
+            [originalText] => Engineer
+            [lemma] => engineer
+            [characterOffsetBegin] => 58
+            [characterOffsetEnd] => 66
+            [pos] => NN
+            [ner] => TITLE
+            [before] =>  
+            [after] => 
+        )
+
+    [23] => Array
         (
             [parent] => 3
             [pennTreebankTag] => .
             [depth] => 4
             [word] => .
+            [index] => 13
+            [originalText] => .
+            [lemma] => .
+            [characterOffsetBegin] => 66
+            [characterOffsetEnd] => 67
+            [pos] => .
+            [ner] => O
+            [before] => 
+            [after] => 
         )
 
 )
