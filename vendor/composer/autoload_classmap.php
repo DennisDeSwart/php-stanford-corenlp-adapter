@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Adapter' => $baseDir . '/src/CoreNLP/Adapter.php',
 );
