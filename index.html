@@ -1,110 +1,1148 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
+
   <head>
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Php-stanford-corenlp-adapter by DennisDeSwart</title>
+    <meta name="description" content="Php-stanford-corenlp-adapter : PHP adapter for Stanford CoreNLP tools">
 
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Php-stanford-corenlp-adapter</title>
   </head>
+
   <body>
-    <div class="wrapper">
-      <header>
-        <h1>Php-stanford-corenlp-adapter</h1>
-        <p>PHP adapter for Stanford CoreNLP tools</p>
 
-        <p class="view"><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter">View the Project on GitHub <small>DennisDeSwart/php-stanford-corenlp-adapter</small></a></p>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter">View on GitHub</a>
 
+          <h1 id="project_title">Php-stanford-corenlp-adapter</h1>
+          <h2 id="project_tagline">PHP adapter for Stanford CoreNLP tools</h2>
 
-        <ul>
-          <li><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/DennisDeSwart/php-stanford-corenlp-adapter/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
         <h1>
-<a id="php-stanford-corenlp-adapter" class="anchor" href="#php-stanford-corenlp-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>php-stanford-corenlp-adapter</h1>
+<a id="php-stanford-corenlp-adapter" class="anchor" href="#php-stanford-corenlp-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PHP Stanford CoreNLP adapter</h1>
 
-<p>PHP adapter for use with Stanford CoreNLP tools 3.6.0<br><br></p>
+<p>PHP adapter for use with Stanford CoreNLP tools 3.6.0
+<br></p>
 
-<p><b>Features:</b><br></p>
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
-<li>The following annotators are used: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, parse<br>
-</li>
-<li>It creates Part-Of-Speech Trees with depth, ID's and parentID's.<br>
-</li>
-<li>It creates a sorted array for tokens, lemma, NER, regexNER<br>
-</li>
-<li>It combines the token array with the Tree IDs for further analysis<br>
- <br>
+<li>PHP command line interface to the JAVA Stanford CoreNLP 3.6.0 server</li>
+<li>The package gets the following annotator data: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, OpenIE</li>
+<li>From the results, the package creates Part-Of-Speech Trees with depth, ID's and parentID's.
+<br>
 </li>
 </ul>
 
-<p><b>TODO list features:</b><br>
-Currently working on providing other features, mainly dependency parsing, relation and quote.<br>
- <br></p>
-
-<p><b>Installation/ requirements:</b><br></p>
-
-<p>1) Stanford CoreNLP 3.6.0<br></p>
+<h2>
+<a id="requirements" class="anchor" href="#requirements" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Requirements</h2>
 
 <ul>
-<li>Download / install CoreNLP 3.6.0: <a href="http://stanfordnlp.github.io/CoreNLP/index.html#download">http://stanfordnlp.github.io/CoreNLP/index.html#download</a><br>
-</li>
-<li>How to use CoreNLP server: <a href="http://stanfordnlp.github.io/CoreNLP/corenlp-server.html">http://stanfordnlp.github.io/CoreNLP/corenlp-server.html</a> <br>
-</li>
-<li>Go to installation directory and start:<br> 
-<code>
-"java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000" 
-</code>
-</li>
-<li>If port 9000 is used by another program, use port 9001<br>
+<li>PHP 5.3 or higher: it also works on PHP 7</li>
+<li>Windows or Linux</li>
+<li>cURL</li>
+</ul>
+
+<pre><code>  https://en.wikipedia.org/wiki/CURL
+</code></pre>
+
+<p><br></p>
+
+<h2>
+<a id="composer" class="anchor" href="#composer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Composer</h2>
+
+<p>You can install the adapter by putting the following line into your composer.json</p>
+
+<pre><code>    {
+        "require": {
+            "dennis-de-swart/php-stanford-corenlp-adapter": "*"
+        }
+    }
+</code></pre>
+
+<p><br></p>
+
+<h1>
+<a id="installation--walkthrough" class="anchor" href="#installation--walkthrough" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation / Walkthrough</h1>
+
+<p><br></p>
+
+<h2>
+<a id="step-1-make-sure-you-have-installed-the-stanford-corenlp-360" class="anchor" href="#step-1-make-sure-you-have-installed-the-stanford-corenlp-360" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 1: make sure you have installed the Stanford CoreNLP 3.6.0:</h2>
+
+<pre><code>http://stanfordnlp.github.io/CoreNLP/index.html#download
+</code></pre>
+
+<p><br></p>
+
+<h2>
+<a id="step-2-server-configuration-and-autoloader" class="anchor" href="#step-2-server-configuration-and-autoloader" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2: Server configuration and autoloader</h2>
+
+<p>The "Adapter" class needs to know your install configuration. An example of the configuration is included in the "bootstrap.php" file. Example:</p>
+
+<pre><code>define('CURLURL' , 'http://localhost:9000/');
+define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Clemma%2Copenie%2Cner%22%2C%22prettyPrint%22%3A%22true%22');
+
+require __DIR__.'/vendor/autoload.php';
+</code></pre>
+
+<p>So this is:</p>
+
+<ul>
+<li>The URL of the CoreNLP server. By default localhost:9000</li>
+<li>The annotator properties: don't change these unless you really need to.</li>
+<li>Starting the composer autoloader<br>
 </li>
 </ul>
 
-<p>2) PHP cURL<br> </p>
+<p>Now, you can either:<br>
+a) include the above code into your main program OR<br>
+b) include the "bootstrap.php" file into your main program:</p>
 
-<ul>
-<li>The current version requires cURL. If you need to install, check here for more info: <a href="https://en.wikipedia.org/wiki/CURL">https://en.wikipedia.org/wiki/CURL</a><br>
-</li>
-<li>If you don't want to use cURL, I suggest using either "wget" on Linux systems, or Composer/Guzzle. However, this requires recoding.<br>
-</li>
-</ul>
+<pre><code>require_once __DIR__.'/bootstrap.php';
+</code></pre>
 
-<p>3) Change the configuration settings in "index.php" for your situation. <br>
- <br></p>
+<p><br></p>
 
-<p><b>How to use:</b><br>
-See index.php for example usage<br>
- <br></p>
+<h2>
+<a id="step-3-start-the-corenlp-serve-from-the-command-line" class="anchor" href="#step-3-start-the-corenlp-serve-from-the-command-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 3: Start the CoreNLP serve from the command line.</h2>
 
-<p><b>Notes:</b><br></p>
+<pre><code>java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000
+</code></pre>
 
-<ul>
-<li>Tested on Windows and Linux<br>
-</li>
-<li>Tested on PHP 5.3 and PHP 7<br>
-</li>
-<li>It is designed to be used with Stanford CoreNLP, where CoreNLP is working as a server.<br>
-</li>
-<li>I plan to make it compatible with the "Stanford Parser" package in the near future.<br>
- <br>
-</li>
-</ul>
+<p>You can change the port to 9001 if port 9000 is busy.</p>
+
+<p><br></p>
+
+<h2>
+<a id="step-4-test-if-the-server-has-started-by-surfing-to-its-url" class="anchor" href="#step-4-test-if-the-server-has-started-by-surfing-to-its-url" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 4: Test if the server has started by surfing to it's URL</h2>
+
+<pre><code>http://localhost:9000/
+</code></pre>
+
+<p>When you surf to this URL, you should see the CoreNLP GUI. If you have problems with installation you can check the manual:</p>
+
+<pre><code>http://stanfordnlp.github.io/CoreNLP/corenlp-server.html
+</code></pre>
+
+<p><br></p>
+
+<h2>
+<a id="step-5-instantiate-the-adapter" class="anchor" href="#step-5-instantiate-the-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 5: Instantiate the adapter:</h2>
+
+<pre><code>$coreNLP    = new Adapter();
+</code></pre>
+
+<p><br></p>
+
+<h2>
+<a id="step-6-to-process-a-text-call-the-getoutput-method" class="anchor" href="#step-6-to-process-a-text-call-the-getoutput-method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 6: To process a text, call the "getOutput" method:</h2>
+
+<pre><code> $text         = 'The Golden Gate Bridge was designed by Joseph Strauss.'; 
+ $coreNLP-&gt;getOutput($text);
+</code></pre>
+
+<p>Note that the first time that you process a text, the server takes about 20 to 30 seconds extra to load definitions. All other calls to the server after that will be much faster. Small texts are usually processed within seconds.
+<br><br></p>
+
+<h2>
+<a id="step-7-the-results" class="anchor" href="#step-7-the-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 7: The results</h2>
+
+<p>If successful the following properties will be available:</p>
+
+<pre><code> $coreNLP-&gt;serverMemory;      //contains all of the server output
+ $coreNLP-&gt;trees;             //contains processed flat trees. Each part of the tree is assigned an ID key
+ $coreNLP-&gt;getWordIDs($tree); //gets an array containing the words of that tree 
+</code></pre>
+
+<p>See index.php for a real world example
+<br><br> </p>
+
+<hr>
+
+<h3>
+<a id="diagram-7a-the-servermemory-contains-all-the-server-data" class="anchor" href="#diagram-7a-the-servermemory-contains-all-the-server-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Diagram 7a: The ServerMemory contains all the server data</h3>
+
+<hr>
+
+<pre><code>[1] =&gt; Array
+        (
+            [sentences] =&gt; Array
+                (
+                    [0] =&gt; Array
+                        (
+                            [index] =&gt; 0
+                            [parse] =&gt; (ROOT
+  (S
+    (NP (DT The) (NNP Golden) (NNP Gate) (NNP Bridge))
+    (VP (VBD was)
+      (VP (VBN designed)
+        (PP (IN by)
+          (NP
+            (NP (NNP Joseph) (NNP Strauss))
+            (, ,)
+            (NP (DT an) (NN Engineer))))))
+    (. .)))
+                            [basic-dependencies] =&gt; Array
+                                (
+                                    [0] =&gt; Array
+                                        (
+                                            [dep] =&gt; ROOT
+                                            [governor] =&gt; 0
+                                            [governorGloss] =&gt; ROOT
+                                            [dependent] =&gt; 6
+                                            [dependentGloss] =&gt; designed
+                                        )
+
+                                    [1] =&gt; Array
+                                        (
+                                            [dep] =&gt; det
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 1
+                                            [dependentGloss] =&gt; The
+                                        )
+
+                                    [2] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 2
+                                            [dependentGloss] =&gt; Golden
+                                        )
+
+                                    [3] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 3
+                                            [dependentGloss] =&gt; Gate
+                                        )
+
+                                    [4] =&gt; Array
+                                        (
+                                            [dep] =&gt; nsubjpass
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 4
+                                            [dependentGloss] =&gt; Bridge
+                                        )
+
+                                    [5] =&gt; Array
+                                        (
+                                            [dep] =&gt; auxpass
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 5
+                                            [dependentGloss] =&gt; was
+                                        )
+
+                                    [6] =&gt; Array
+                                        (
+                                            [dep] =&gt; case
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 7
+                                            [dependentGloss] =&gt; by
+                                        )
+
+                                    [7] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 8
+                                            [dependentGloss] =&gt; Joseph
+                                        )
+
+                                    [8] =&gt; Array
+                                        (
+                                            [dep] =&gt; nmod
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 9
+                                            [dependentGloss] =&gt; Strauss
+                                        )
+
+                                    [9] =&gt; Array
+                                        (
+                                            [dep] =&gt; punct
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 10
+                                            [dependentGloss] =&gt; ,
+                                        )
+
+                                    [10] =&gt; Array
+                                        (
+                                            [dep] =&gt; det
+                                            [governor] =&gt; 12
+                                            [governorGloss] =&gt; Engineer
+                                            [dependent] =&gt; 11
+                                            [dependentGloss] =&gt; an
+                                        )
+
+                                    [11] =&gt; Array
+                                        (
+                                            [dep] =&gt; appos
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 12
+                                            [dependentGloss] =&gt; Engineer
+                                        )
+
+                                    [12] =&gt; Array
+                                        (
+                                            [dep] =&gt; punct
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 13
+                                            [dependentGloss] =&gt; .
+                                        )
+
+                                )
+
+                            [collapsed-dependencies] =&gt; Array
+                                (
+                                    [0] =&gt; Array
+                                        (
+                                            [dep] =&gt; ROOT
+                                            [governor] =&gt; 0
+                                            [governorGloss] =&gt; ROOT
+                                            [dependent] =&gt; 6
+                                            [dependentGloss] =&gt; designed
+                                        )
+
+                                    [1] =&gt; Array
+                                        (
+                                            [dep] =&gt; det
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 1
+                                            [dependentGloss] =&gt; The
+                                        )
+
+                                    [2] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 2
+                                            [dependentGloss] =&gt; Golden
+                                        )
+
+                                    [3] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 3
+                                            [dependentGloss] =&gt; Gate
+                                        )
+
+                                    [4] =&gt; Array
+                                        (
+                                            [dep] =&gt; nsubjpass
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 4
+                                            [dependentGloss] =&gt; Bridge
+                                        )
+
+                                    [5] =&gt; Array
+                                        (
+                                            [dep] =&gt; auxpass
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 5
+                                            [dependentGloss] =&gt; was
+                                        )
+
+                                    [6] =&gt; Array
+                                        (
+                                            [dep] =&gt; case
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 7
+                                            [dependentGloss] =&gt; by
+                                        )
+
+                                    [7] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 8
+                                            [dependentGloss] =&gt; Joseph
+                                        )
+
+                                    [8] =&gt; Array
+                                        (
+                                            [dep] =&gt; nmod:agent
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 9
+                                            [dependentGloss] =&gt; Strauss
+                                        )
+
+                                    [9] =&gt; Array
+                                        (
+                                            [dep] =&gt; det
+                                            [governor] =&gt; 12
+                                            [governorGloss] =&gt; Engineer
+                                            [dependent] =&gt; 11
+                                            [dependentGloss] =&gt; an
+                                        )
+
+                                    [10] =&gt; Array
+                                        (
+                                            [dep] =&gt; appos
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 12
+                                            [dependentGloss] =&gt; Engineer
+                                        )
+
+                                )
+
+                            [collapsed-ccprocessed-dependencies] =&gt; Array
+                                (
+                                    [0] =&gt; Array
+                                        (
+                                            [dep] =&gt; ROOT
+                                            [governor] =&gt; 0
+                                            [governorGloss] =&gt; ROOT
+                                            [dependent] =&gt; 6
+                                            [dependentGloss] =&gt; designed
+                                        )
+
+                                    [1] =&gt; Array
+                                        (
+                                            [dep] =&gt; det
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 1
+                                            [dependentGloss] =&gt; The
+                                        )
+
+                                    [2] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 2
+                                            [dependentGloss] =&gt; Golden
+                                        )
+
+                                    [3] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 4
+                                            [governorGloss] =&gt; Bridge
+                                            [dependent] =&gt; 3
+                                            [dependentGloss] =&gt; Gate
+                                        )
+
+                                    [4] =&gt; Array
+                                        (
+                                            [dep] =&gt; nsubjpass
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 4
+                                            [dependentGloss] =&gt; Bridge
+                                        )
+
+                                    [5] =&gt; Array
+                                        (
+                                            [dep] =&gt; auxpass
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 5
+                                            [dependentGloss] =&gt; was
+                                        )
+
+                                    [6] =&gt; Array
+                                        (
+                                            [dep] =&gt; case
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 7
+                                            [dependentGloss] =&gt; by
+                                        )
+
+                                    [7] =&gt; Array
+                                        (
+                                            [dep] =&gt; compound
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 8
+                                            [dependentGloss] =&gt; Joseph
+                                        )
+
+                                    [8] =&gt; Array
+                                        (
+                                            [dep] =&gt; nmod:agent
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 9
+                                            [dependentGloss] =&gt; Strauss
+                                        )
+
+                                    [9] =&gt; Array
+                                        (
+                                            [dep] =&gt; punct
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 10
+                                            [dependentGloss] =&gt; ,
+                                        )
+
+                                    [10] =&gt; Array
+                                        (
+                                            [dep] =&gt; det
+                                            [governor] =&gt; 12
+                                            [governorGloss] =&gt; Engineer
+                                            [dependent] =&gt; 11
+                                            [dependentGloss] =&gt; an
+                                        )
+
+                                    [11] =&gt; Array
+                                        (
+                                            [dep] =&gt; appos
+                                            [governor] =&gt; 9
+                                            [governorGloss] =&gt; Strauss
+                                            [dependent] =&gt; 12
+                                            [dependentGloss] =&gt; Engineer
+                                        )
+
+                                    [12] =&gt; Array
+                                        (
+                                            [dep] =&gt; punct
+                                            [governor] =&gt; 6
+                                            [governorGloss] =&gt; designed
+                                            [dependent] =&gt; 13
+                                            [dependentGloss] =&gt; .
+                                        )
+
+                                )
+
+                            [openie] =&gt; Array
+                                (
+                                    [0] =&gt; Array
+                                        (
+                                            [subject] =&gt; Golden Gate Bridge
+                                            [subjectSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 1
+                                                    [1] =&gt; 4
+                                                )
+
+                                            [relation] =&gt; was
+                                            [relationSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 4
+                                                    [1] =&gt; 5
+                                                )
+
+                                            [object] =&gt; designed
+                                            [objectSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 5
+                                                    [1] =&gt; 6
+                                                )
+
+                                        )
+
+                                    [1] =&gt; Array
+                                        (
+                                            [subject] =&gt; Golden Gate Bridge
+                                            [subjectSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 1
+                                                    [1] =&gt; 4
+                                                )
+
+                                            [relation] =&gt; was designed by
+                                            [relationSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 4
+                                                    [1] =&gt; 6
+                                                )
+
+                                            [object] =&gt; Engineer
+                                            [objectSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 11
+                                                    [1] =&gt; 12
+                                                )
+
+                                        )
+
+                                    [2] =&gt; Array
+                                        (
+                                            [subject] =&gt; Golden Gate Bridge
+                                            [subjectSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 1
+                                                    [1] =&gt; 4
+                                                )
+
+                                            [relation] =&gt; was designed by
+                                            [relationSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 4
+                                                    [1] =&gt; 6
+                                                )
+
+                                            [object] =&gt; Joseph Strauss
+                                            [objectSpan] =&gt; Array
+                                                (
+                                                    [0] =&gt; 7
+                                                    [1] =&gt; 9
+                                                )
+
+                                        )
+
+                                )
+
+                            [tokens] =&gt; Array
+                                (
+                                    [0] =&gt; Array
+                                        (
+                                            [index] =&gt; 1
+                                            [word] =&gt; The
+                                            [originalText] =&gt; The
+                                            [lemma] =&gt; the
+                                            [characterOffsetBegin] =&gt; 0
+                                            [characterOffsetEnd] =&gt; 3
+                                            [pos] =&gt; DT
+                                            [ner] =&gt; O
+                                            [before] =&gt; 
+                                            [after] =&gt;  
+                                        )
+
+                                    [1] =&gt; Array
+                                        (
+                                            [index] =&gt; 2
+                                            [word] =&gt; Golden
+                                            [originalText] =&gt; Golden
+                                            [lemma] =&gt; Golden
+                                            [characterOffsetBegin] =&gt; 4
+                                            [characterOffsetEnd] =&gt; 10
+                                            [pos] =&gt; NNP
+                                            [ner] =&gt; LOCATION
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [2] =&gt; Array
+                                        (
+                                            [index] =&gt; 3
+                                            [word] =&gt; Gate
+                                            [originalText] =&gt; Gate
+                                            [lemma] =&gt; Gate
+                                            [characterOffsetBegin] =&gt; 11
+                                            [characterOffsetEnd] =&gt; 15
+                                            [pos] =&gt; NNP
+                                            [ner] =&gt; LOCATION
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [3] =&gt; Array
+                                        (
+                                            [index] =&gt; 4
+                                            [word] =&gt; Bridge
+                                            [originalText] =&gt; Bridge
+                                            [lemma] =&gt; Bridge
+                                            [characterOffsetBegin] =&gt; 16
+                                            [characterOffsetEnd] =&gt; 22
+                                            [pos] =&gt; NNP
+                                            [ner] =&gt; LOCATION
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [4] =&gt; Array
+                                        (
+                                            [index] =&gt; 5
+                                            [word] =&gt; was
+                                            [originalText] =&gt; was
+                                            [lemma] =&gt; be
+                                            [characterOffsetBegin] =&gt; 23
+                                            [characterOffsetEnd] =&gt; 26
+                                            [pos] =&gt; VBD
+                                            [ner] =&gt; O
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [5] =&gt; Array
+                                        (
+                                            [index] =&gt; 6
+                                            [word] =&gt; designed
+                                            [originalText] =&gt; designed
+                                            [lemma] =&gt; design
+                                            [characterOffsetBegin] =&gt; 27
+                                            [characterOffsetEnd] =&gt; 35
+                                            [pos] =&gt; VBN
+                                            [ner] =&gt; O
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [6] =&gt; Array
+                                        (
+                                            [index] =&gt; 7
+                                            [word] =&gt; by
+                                            [originalText] =&gt; by
+                                            [lemma] =&gt; by
+                                            [characterOffsetBegin] =&gt; 36
+                                            [characterOffsetEnd] =&gt; 38
+                                            [pos] =&gt; IN
+                                            [ner] =&gt; O
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [7] =&gt; Array
+                                        (
+                                            [index] =&gt; 8
+                                            [word] =&gt; Joseph
+                                            [originalText] =&gt; Joseph
+                                            [lemma] =&gt; Joseph
+                                            [characterOffsetBegin] =&gt; 39
+                                            [characterOffsetEnd] =&gt; 45
+                                            [pos] =&gt; NNP
+                                            [ner] =&gt; PERSON
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [8] =&gt; Array
+                                        (
+                                            [index] =&gt; 9
+                                            [word] =&gt; Strauss
+                                            [originalText] =&gt; Strauss
+                                            [lemma] =&gt; Strauss
+                                            [characterOffsetBegin] =&gt; 46
+                                            [characterOffsetEnd] =&gt; 53
+                                            [pos] =&gt; NNP
+                                            [ner] =&gt; PERSON
+                                            [before] =&gt;  
+                                            [after] =&gt; 
+                                        )
+
+                                    [9] =&gt; Array
+                                        (
+                                            [index] =&gt; 10
+                                            [word] =&gt; ,
+                                            [originalText] =&gt; ,
+                                            [lemma] =&gt; ,
+                                            [characterOffsetBegin] =&gt; 53
+                                            [characterOffsetEnd] =&gt; 54
+                                            [pos] =&gt; ,
+                                            [ner] =&gt; O
+                                            [before] =&gt; 
+                                            [after] =&gt;  
+                                        )
+
+                                    [10] =&gt; Array
+                                        (
+                                            [index] =&gt; 11
+                                            [word] =&gt; an
+                                            [originalText] =&gt; an
+                                            [lemma] =&gt; a
+                                            [characterOffsetBegin] =&gt; 55
+                                            [characterOffsetEnd] =&gt; 57
+                                            [pos] =&gt; DT
+                                            [ner] =&gt; O
+                                            [before] =&gt;  
+                                            [after] =&gt;  
+                                        )
+
+                                    [11] =&gt; Array
+                                        (
+                                            [index] =&gt; 12
+                                            [word] =&gt; Engineer
+                                            [originalText] =&gt; Engineer
+                                            [lemma] =&gt; engineer
+                                            [characterOffsetBegin] =&gt; 58
+                                            [characterOffsetEnd] =&gt; 66
+                                            [pos] =&gt; NN
+                                            [ner] =&gt; TITLE
+                                            [before] =&gt;  
+                                            [after] =&gt; 
+                                        )
+
+                                    [12] =&gt; Array
+                                        (
+                                            [index] =&gt; 13
+                                            [word] =&gt; .
+                                            [originalText] =&gt; .
+                                            [lemma] =&gt; .
+                                            [characterOffsetBegin] =&gt; 66
+                                            [characterOffsetEnd] =&gt; 67
+                                            [pos] =&gt; .
+                                            [ner] =&gt; O
+                                            [before] =&gt; 
+                                            [after] =&gt; 
+                                        )
+
+                                )
+
+                        )
+
+                )
+
+        )
+</code></pre>
+
+<hr>
+
+<h3>
+<a id="diagram-7b-tree-with-tokens" class="anchor" href="#diagram-7b-tree-with-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Diagram 7b: Tree With Tokens</h3>
+
+<hr>
+
+<pre><code>Array
+(
+    [1] =&gt; Array
+        (
+            [parent] =&gt; 0
+            [pennTreebankTag] =&gt; ROOT
+            [depth] =&gt; 0
+        )
+
+    [2] =&gt; Array
+        (
+            [parent] =&gt; 0
+            [pennTreebankTag] =&gt; ROOT
+            [depth] =&gt; 0
+        )
+
+    [3] =&gt; Array
+        (
+            [parent] =&gt; 2
+            [pennTreebankTag] =&gt; S
+            [depth] =&gt; 2
+        )
+
+    [4] =&gt; Array
+        (
+            [parent] =&gt; 3
+            [pennTreebankTag] =&gt; NP
+            [depth] =&gt; 4
+        )
+
+    [5] =&gt; Array
+        (
+            [parent] =&gt; 4
+            [pennTreebankTag] =&gt; DT
+            [depth] =&gt; 6
+            [word] =&gt; The
+            [index] =&gt; 1
+            [originalText] =&gt; The
+            [lemma] =&gt; the
+            [characterOffsetBegin] =&gt; 0
+            [characterOffsetEnd] =&gt; 3
+            [pos] =&gt; DT
+            [ner] =&gt; O
+            [before] =&gt; 
+            [after] =&gt;  
+        )
+
+    [6] =&gt; Array
+        (
+            [parent] =&gt; 4
+            [pennTreebankTag] =&gt; NNP
+            [depth] =&gt; 6
+            [word] =&gt; Golden
+            [index] =&gt; 2
+            [originalText] =&gt; Golden
+            [lemma] =&gt; Golden
+            [characterOffsetBegin] =&gt; 4
+            [characterOffsetEnd] =&gt; 10
+            [pos] =&gt; NNP
+            [ner] =&gt; LOCATION
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [7] =&gt; Array
+        (
+            [parent] =&gt; 4
+            [pennTreebankTag] =&gt; NNP
+            [depth] =&gt; 6
+            [word] =&gt; Gate
+            [index] =&gt; 3
+            [originalText] =&gt; Gate
+            [lemma] =&gt; Gate
+            [characterOffsetBegin] =&gt; 11
+            [characterOffsetEnd] =&gt; 15
+            [pos] =&gt; NNP
+            [ner] =&gt; LOCATION
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [8] =&gt; Array
+        (
+            [parent] =&gt; 4
+            [pennTreebankTag] =&gt; NNP
+            [depth] =&gt; 6
+            [word] =&gt; Bridge
+            [index] =&gt; 4
+            [originalText] =&gt; Bridge
+            [lemma] =&gt; Bridge
+            [characterOffsetBegin] =&gt; 16
+            [characterOffsetEnd] =&gt; 22
+            [pos] =&gt; NNP
+            [ner] =&gt; LOCATION
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [9] =&gt; Array
+        (
+            [parent] =&gt; 3
+            [pennTreebankTag] =&gt; VP
+            [depth] =&gt; 4
+        )
+
+    [10] =&gt; Array
+        (
+            [parent] =&gt; 9
+            [pennTreebankTag] =&gt; VBD
+            [depth] =&gt; 6
+            [word] =&gt; was
+            [index] =&gt; 5
+            [originalText] =&gt; was
+            [lemma] =&gt; be
+            [characterOffsetBegin] =&gt; 23
+            [characterOffsetEnd] =&gt; 26
+            [pos] =&gt; VBD
+            [ner] =&gt; O
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [11] =&gt; Array
+        (
+            [parent] =&gt; 9
+            [pennTreebankTag] =&gt; VP
+            [depth] =&gt; 6
+        )
+
+    [12] =&gt; Array
+        (
+            [parent] =&gt; 11
+            [pennTreebankTag] =&gt; VBN
+            [depth] =&gt; 8
+            [word] =&gt; designed
+            [index] =&gt; 6
+            [originalText] =&gt; designed
+            [lemma] =&gt; design
+            [characterOffsetBegin] =&gt; 27
+            [characterOffsetEnd] =&gt; 35
+            [pos] =&gt; VBN
+            [ner] =&gt; O
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [13] =&gt; Array
+        (
+            [parent] =&gt; 11
+            [pennTreebankTag] =&gt; PP
+            [depth] =&gt; 8
+        )
+
+    [14] =&gt; Array
+        (
+            [parent] =&gt; 13
+            [pennTreebankTag] =&gt; IN
+            [depth] =&gt; 10
+            [word] =&gt; by
+            [index] =&gt; 7
+            [originalText] =&gt; by
+            [lemma] =&gt; by
+            [characterOffsetBegin] =&gt; 36
+            [characterOffsetEnd] =&gt; 38
+            [pos] =&gt; IN
+            [ner] =&gt; O
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [15] =&gt; Array
+        (
+            [parent] =&gt; 13
+            [pennTreebankTag] =&gt; NP
+            [depth] =&gt; 10
+        )
+
+    [16] =&gt; Array
+        (
+            [parent] =&gt; 15
+            [pennTreebankTag] =&gt; NP
+            [depth] =&gt; 12
+        )
+
+    [17] =&gt; Array
+        (
+            [parent] =&gt; 16
+            [pennTreebankTag] =&gt; NNP
+            [depth] =&gt; 14
+            [word] =&gt; Joseph
+            [index] =&gt; 8
+            [originalText] =&gt; Joseph
+            [lemma] =&gt; Joseph
+            [characterOffsetBegin] =&gt; 39
+            [characterOffsetEnd] =&gt; 45
+            [pos] =&gt; NNP
+            [ner] =&gt; PERSON
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [18] =&gt; Array
+        (
+            [parent] =&gt; 16
+            [pennTreebankTag] =&gt; NNP
+            [depth] =&gt; 14
+            [word] =&gt; Strauss
+            [index] =&gt; 9
+            [originalText] =&gt; Strauss
+            [lemma] =&gt; Strauss
+            [characterOffsetBegin] =&gt; 46
+            [characterOffsetEnd] =&gt; 53
+            [pos] =&gt; NNP
+            [ner] =&gt; PERSON
+            [before] =&gt;  
+            [after] =&gt; 
+        )
+
+    [19] =&gt; Array
+        (
+            [parent] =&gt; 15
+            [pennTreebankTag] =&gt; ,
+            [depth] =&gt; 12
+            [word] =&gt; ,
+            [index] =&gt; 10
+            [originalText] =&gt; ,
+            [lemma] =&gt; ,
+            [characterOffsetBegin] =&gt; 53
+            [characterOffsetEnd] =&gt; 54
+            [pos] =&gt; ,
+            [ner] =&gt; O
+            [before] =&gt; 
+            [after] =&gt;  
+        )
+
+    [20] =&gt; Array
+        (
+            [parent] =&gt; 10
+            [pennTreebankTag] =&gt; NP
+            [depth] =&gt; 12
+        )
+
+    [21] =&gt; Array
+        (
+            [parent] =&gt; 20
+            [pennTreebankTag] =&gt; DT
+            [depth] =&gt; 14
+            [word] =&gt; an
+            [index] =&gt; 11
+            [originalText] =&gt; an
+            [lemma] =&gt; a
+            [characterOffsetBegin] =&gt; 55
+            [characterOffsetEnd] =&gt; 57
+            [pos] =&gt; DT
+            [ner] =&gt; O
+            [before] =&gt;  
+            [after] =&gt;  
+        )
+
+    [22] =&gt; Array
+        (
+            [parent] =&gt; 20
+            [pennTreebankTag] =&gt; NN
+            [depth] =&gt; 14
+            [word] =&gt; Engineer
+            [index] =&gt; 12
+            [originalText] =&gt; Engineer
+            [lemma] =&gt; engineer
+            [characterOffsetBegin] =&gt; 58
+            [characterOffsetEnd] =&gt; 66
+            [pos] =&gt; NN
+            [ner] =&gt; TITLE
+            [before] =&gt;  
+            [after] =&gt; 
+        )
+
+    [23] =&gt; Array
+        (
+            [parent] =&gt; 3
+            [pennTreebankTag] =&gt; .
+            [depth] =&gt; 4
+            [word] =&gt; .
+            [index] =&gt; 13
+            [originalText] =&gt; .
+            [lemma] =&gt; .
+            [characterOffsetBegin] =&gt; 66
+            [characterOffsetEnd] =&gt; 67
+            [pos] =&gt; .
+            [ner] =&gt; O
+            [before] =&gt; 
+            [after] =&gt; 
+        )
+
+)
+
+</code></pre>
+
+<h2>
+<a id="any-questions" class="anchor" href="#any-questions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Any questions?</h2>
+
+<p>Please let me know. 
+<br><br></p>
+
+<h2>
+<a id="credits" class="anchor" href="#credits" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>Some functions are forked from this "Stanford parser" package:</p>
+
+<pre><code> https://github.com/agentile/PHP-Stanford-NLP
+</code></pre>
       </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/DennisDeSwart">DennisDeSwart</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Php-stanford-corenlp-adapter maintained by <a href="https://github.com/DennisDeSwart">DennisDeSwart</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
-    <script src="javascripts/scale.fix.js"></script>
+
     
+
   </body>
 </html>
