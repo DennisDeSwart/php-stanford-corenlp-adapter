@@ -38,8 +38,8 @@ class Adapter {
 		}
 		
 		// get object with data
-		$this->serverOutput	= json_decode($this->serverRawOutput);
-
+		$this->serverOutput	= json_decode($this->serverRawOutput, true);	// note: decodes into an array, not an object
+	
 		// all done
 		return;
 	}
@@ -66,8 +66,8 @@ class Adapter {
 		// cache result
 		$this->serverMemory[] = $this->serverOutput;
 		
-		foreach($this->serverOutput->sentences	as	$sentence){
-			$tree			= $this->getTree($sentence->parse); // gets one tree
+		foreach($this->serverOutput['sentences']	as	$sentence){
+			$tree			= $this->getTree($sentence['parse']); // gets one tree
 			$this->trees[]	= $tree; // collect all trees
 			
 		}
@@ -169,9 +169,7 @@ class Adapter {
 						$this->memId++;
 						$this->mem[$this->memId]['parent'] = $this->parentId;
 					}
-					
 				}
-				
 				
 				if($iterator->key() == 'pennTag'){
 					$this->mem[$this->memId]['pennTreebankTag'] = $iterator->current();
@@ -254,7 +252,53 @@ class Adapter {
  * 
  */
 	
-	// Get an array with the tree ID's that contain real words
+	// import token data into the flat tree	
+	public function tokensToTree($tokens, $tree){
+		
+		// step 1: get tree key ID's for each of the words
+		$treeWordKeys = $this->getWordKeys($tree);
+		
+		// step 2: change the keys of the token array to tree IDs
+		$tokens = array_combine(array_values($treeWordKeys), $tokens);
+		
+		//print_r($tokens);
+		//print_r($tree);
+		
+		
+		// step 3: import the token array into the tree
+		foreach($tree as $treeKey => $part){
+			if(array_key_exists($treeKey, $tokens)){
+				$tokenItems = $tokens[$treeKey];
+				print_r($tokenItems);
+				die;
+				
+					foreach($tokenItems as $key => $item){
+						
+						if($key != 'pos' && $key != 'originalText'){
+							$tree[$treeKey][$key] = $item;
+						}
+					}	
+			}
+		}
+		
+		return $tree;
+	}
+	
+	
+	// Get an array that contains the keys to words within the tree
+	public function getWordKeys(array $tree){
+	
+		$result = array();
+	
+		foreach ($tree as $wordId => $node){
+			if(array_key_exists('word', $node)){
+				$result[] = $wordId;
+			}
+		}
+		return $result;
+	}
+	
+	// Get an array with the tree parts that contain words
 	public function getWordIDs(array $tree){
 		
 		$result = array();
