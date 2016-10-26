@@ -11,18 +11,19 @@ class Adapter {
  * COMMAND LINE FUNCTIONS
  * 
  */
-	
-    /**
-     * function getServerOutput
-     *
-     * - sends the server command
-     * - returns server output
-     */
-
+    
     public $serverRawOutput = ''; // container for serveroutput
     public $serverOutput    = ''; // container for decoded data
     public $serverMemory    = ''; // keeps all the output
-
+	
+   /**
+    * function getServerOutput:
+    * - sends the server command
+    * - returns server output
+    * 
+    * @param string $text
+    * @return type
+    */
     public function getServerOutput(string $text){
 
         // create a shell command
@@ -38,8 +39,7 @@ class Adapter {
 
         // get object with data
         $this->serverOutput	= json_decode($this->serverRawOutput, true);	// note: decodes into an array, not an object
-
-        // all done
+        
         return;
     }
 	
@@ -57,7 +57,7 @@ class Adapter {
      * 
      * - role: all-in-one function to make life easy for the user
      */
-    public function getOutput($text){
+    public function getOutput(string $text){
 
         // run the text through CoreNLP
         $this->getServerOutput($text);
@@ -72,9 +72,9 @@ class Adapter {
             die;
         }
 
-        foreach($this->serverOutput['sentences']	as	$sentence){
-            $tree			= $this->getTree($sentence['parse']); // gets one tree
-            $this->trees[]	= $tree; // collect all trees
+        foreach($this->serverOutput['sentences'] as $sentence){
+            $tree           = $this->getTreeWithTokens($sentence['parse'], $sentence['tokens']); // gets one tree
+            $this->trees[]  = $tree; // collect all trees
         }
 
         // to get the trees just call $coreNLP->trees in the main program
@@ -87,8 +87,54 @@ class Adapter {
  * MAIN PARSING FUNCTIONS
  * 
  */
+     /**
+      * Gets tree from parse
+      * 
+      * @param string $parse
+      * @return array
+      */
+    public function getTree(string $parse){
+
+        $this->getSentenceTree($parse);  // creates tree from parse, then saves tree in "mem"
+        $result = $this->mem;            // get tree from "mem"    
+        $this->resetSentenceTree();      // clear "mem"
+
+        return (array) $result;
+    }
     
-    // helpers for SentenceTree
+    /**
+     * Gets tree that combines depth/ parent information with the tokens
+     * 
+     * @param array $sentence
+     * @return array
+     */
+    public function getTreeWithTokens(string $parse, array $tokens){
+        
+        // get simple tree
+        $tree = $this->getTree($parse);
+      
+        // step 1: get tree key ID's for each of the words
+        $treeWordKeys = $this->getWordKeys($tree);
+
+        // step 2: change the keys of the token array to tree IDs
+        $combinedTokens = array_combine(array_values($treeWordKeys), $tokens);
+
+        // step 3: import the token array into the tree
+        foreach($tree as $treeKey => $value){
+            if(array_key_exists($treeKey, $combinedTokens)){
+                $tokenItems = $combinedTokens[$treeKey];
+             
+                foreach($tokenItems as $tokenKey => $token){           
+                    $tree[$treeKey][$tokenKey] = $token;                  
+                }	
+            }
+        }
+        return $tree;
+    }
+    
+    /**
+     * helpers for SentenceTree
+     */
     private $mem;
     private $memId;
     private $memparent;
@@ -98,7 +144,7 @@ class Adapter {
     private $sentenceTree = array();
 
     /**
-     * Resets SentenceTree
+     * resets SentenceTree
      */
     private function resetSentenceTree(){
         $this->mem          = array();
@@ -109,32 +155,16 @@ class Adapter {
         $this->parentId     = 0;
         $this->sentenceTree = array();
     }
-    
-    
-     /**
-     * Gets tree for one sentence
+   
+    /**
+     * Takes one $sentence and creates a flat tree with:
+     * - parentId
+     * - penn Treebank Tag
+     * - depth
+     * - word value
      * 
      * @param string $sentence
-     * @return array $result
      */
-    public function getTree(string $sentence){
-
-        $this->getSentenceTree($sentence);  // creates tree
-        $result = $this->mem;
-        $this->resetSentenceTree();
-
-        return (array) $result;
-    }
-    
-    /**
-    * Function getSentenceTree
-    * 
-    * Takes one $sentence and creates a flat tree with:
-    * - parentId
-    * - pennTreeTag
-    * - depth
-    * - word
-    */
     public function getSentenceTree(string $sentence){
 	
         // parse the tree
@@ -178,13 +208,15 @@ class Adapter {
         }
     }
     
-    // helper for SentenceTree iteration
+    /**
+     * helper for SentenceTree iteration
+     */
     private function depthShiftUp(){
         
         // remember the parent
         $this->parentId = $this->memId;
 
-        // set new id for this child
+        // set new id for iteration
         $this->memId++;
 
         // set parent
@@ -197,20 +229,31 @@ class Adapter {
         $this->memDepth = $this->iteratorDepth;
     }
     
-     // helper for SentenceTree iteration
+     /**
+     * helper for SentenceTree iteration
+     */
     private function depthShiftDown(){
+        
+        // set new id for iteration
         $this->memId++;
+        
+        // set new depth
         $this->memDepth = $this->iteratorDepth;
+        
+        // set new parent
         $this->parentId = ($this->memDepth)-2;
+        
+        // write parent to tree
         $this->mem[$this->memId]['parent'] = $this->memparent[$this->parentId] ;
     }
 		
     /**
      * Creates tree for parsed sentence
-     * 
      * Based on https://github.com/agentile/PHP-Stanford-NLP
+     * 
+     * @param string $sentence
+     * @return type
      */
-
     private function runSentenceTree(string $sentence)
     {
         $arr 	= array('pennTag' => null);
@@ -246,9 +289,13 @@ class Adapter {
         return $arr;
     }
 	
-    /**
-     * Find the position of a matching closing bracket for a string opening bracket
-     */
+  /**
+   * Find the position of a matching closing bracket for a string opening bracket
+   * 
+   * @param string $string
+   * @param int $start_pos
+   * @return type
+   */
     private function getMatchingBracket(string $string, int $start_pos)
     {
         $length = strlen($string);
@@ -265,47 +312,13 @@ class Adapter {
         }
     }
 	
-	
 /**
  * 
  * OTHER PARSING FUNCTIONS
  * 
  */
-	
-    // import token data into the flat tree	
-    public function tokensToTree($tokens, $tree){
-
-        // step 1: get tree key ID's for each of the words
-        $treeWordKeys = $this->getWordKeys($tree);
-
-        // step 2: change the keys of the token array to tree IDs
-        $tokens = array_combine(array_values($treeWordKeys), $tokens);
-
-        //print_r($tokens);
-        //print_r($tree);
-
-
-        // step 3: import the token array into the tree
-        foreach($tree as $treeKey => $part){
-            if(array_key_exists($treeKey, $tokens)){
-                $tokenItems = $tokens[$treeKey];
-                print_r($tokenItems);
-                die;
-
-                foreach($tokenItems as $key => $item){
-
-                        if($key != 'pos' && $key != 'originalText'){
-                                $tree[$treeKey][$key] = $item;
-                        }
-                }	
-            }
-        }
-
-        return $tree;
-    }
-	
-	
-    // Get an array that contains the keys to words within the tree
+    
+    // Get an array that contains the keys to words within one tree
     public function getWordKeys(array $tree){
 
         $result = array();
@@ -318,8 +331,8 @@ class Adapter {
         return $result;
     }
 
-    // Get an array with the tree parts that contain words
-    public function getWordIDs(array $tree){
+    // Get an array with the tree leaves that contain words
+    public function getWordValues(array $tree){
 
         $result = array();
 

@@ -16,9 +16,9 @@
 	$coreNLP->getOutput($text1);
 	
 	// Second text
-    $text2         = 'The Golden Gate Bridge was designed by Joseph Strauss, an Engineer.';     // testing NER, regexNER
+        $text2         = 'The Golden Gate Bridge was designed by Joseph Strauss, an Engineer.';     // testing NER, regexNER
 	$coreNLP->getOutput($text2);
-	
+        
 /**
  * Display result
  */
@@ -40,7 +40,7 @@
 
 	// get IDs for a tree
 	headerText('EVERY TREE HAS UNIQUE IDs: this shows the Word-tree-IDs for the second tree');
-	print_r($coreNLP->getWordIDs($coreNLP->trees[1]));
+	print_r($coreNLP->getWordValues($coreNLP->trees[1]));
 	
 	// this is just a helper function for a nice header
 	function headerText($header){
