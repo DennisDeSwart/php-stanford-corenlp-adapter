@@ -25,7 +25,7 @@
     $coreNLP->getOutput($text1);
 
     // Second text
-    $text2         = 'The Golden Gate Bridge was designed by \"Joseph Strauss\".';     // testing NER, regexNER
+    $text2         = 'The Golden Gate Bridge was designed by Joseph Strauss.';     // testing NER, regexNER
     $coreNLP->getOutput($text2);
         
 /**
