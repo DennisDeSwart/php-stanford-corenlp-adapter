@@ -4,7 +4,7 @@
  * Stanford Core NLP Adapter
  */
 
-class Adapter {
+class CorenlpAdapter {
 	
 /**
  * 
@@ -15,15 +15,38 @@ class Adapter {
     public $serverRawOutput = ''; // container for serveroutput
     public $serverOutput    = ''; // container for decoded data
     public $serverMemory    = ''; // keeps all the output
-	
-   /**
-    * function getServerOutput:
-    * - sends the server command
-    * - returns server output
-    * 
-    * @param string $text
-    * @return type
-    */
+
+    /**
+     * function getOnlineOutput:
+     * - sends request to online CoreNLP API
+     * - returns JSON reply
+     */
+
+     
+    public function getServerOutputOnline(string $text){
+    
+        $doc = new DomDocument();
+        $doc->loadHTMLfile(ONLINE_URL.urlencode($text));
+        $pre = $doc->getElementsByTagName('pre')->item(0);
+        $content = $pre->nodeValue;
+        $string = htmlentities($content, null, 'utf-8');
+        $content = str_replace("&nbsp;", "", $string);
+        $content = html_entity_decode($content);  
+        $this->serverRawOutput = $content;
+        
+        // get object with data
+        $this->serverOutput	= json_decode($this->serverRawOutput, true);	// note: decodes into an array, not an object
+        return;
+    }
+
+    /**
+     * function getServerOutput:
+     * - sends the server command
+     * - returns server output
+     * 
+     * @param string $text
+     * @return type
+     */
     public function getServerOutput(string $text){
 
         // create a shell command
@@ -59,9 +82,14 @@ class Adapter {
      */
     public function getOutput(string $text){
 
-        // run the text through CoreNLP
-        $this->getServerOutput($text);
-
+        if(ONLINE_API){
+            // run the text through the public API
+            $this->getServerOutputOnline($text);
+        } else{
+            // run the text through Java CoreNLP
+            $this->getServerOutput($text);
+        }
+        
         // cache result
         $this->serverMemory[] = $this->serverOutput;
 

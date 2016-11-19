@@ -7,7 +7,7 @@ namespace Composer\Autoload;
 class ComposerStaticInitcce30c5038dc5a2bc26636b67dfd074e
 {
     public static $classMap = array (
-        'Adapter' => __DIR__ . '/../..' . '/src/CoreNLP/Adapter.php',
+        'CorenlpAdapter' => __DIR__ . '/../..' . '/src/CoreNLP/CorenlpAdapter.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

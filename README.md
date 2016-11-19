@@ -1,18 +1,19 @@
 
 # PHP Stanford CoreNLP adapter
 
-PHP adapter for use with Stanford CoreNLP tools 3.6.0
+PHP adapter for use with Stanford CoreNLP
 <br />
 ## Features
-- PHP command line interface to the JAVA Stanford CoreNLP 3.6.0 server
-- The package gets the following annotator data: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, OpenIE
-- From the results, the package creates Part-Of-Speech Trees with depth, ID's and parentID's.
+- Connect to Stanford University CoreNLP API online
+- Connect to Stanford CoreNLP 3.6.0 server (Java) through command line
+- The package gets the following annotator data: tokenize,ssplit,parse,regexner,pos,depparse,lemma,ner,natlog,openie,dcoref,mention,coref
+- The package creates Part-Of-Speech Trees with depth, parent- and child ID
 <br />
 
 ## Requirements
 - PHP 5.3 or higher: it also works on PHP 7
 - Windows or Linux
-- cURL
+- Java server connection requires cURL. Note: online API connection does not require cURL. 
 
 ```
   https://en.wikipedia.org/wiki/CURL
@@ -32,35 +33,23 @@ You can install the adapter by putting the following line into your composer.jso
 ```
 
 <br />
-# Installation / Walkthrough
+# Installation / Walkthrough for Java server version
 <br />
 
-## Step 1: make sure you have installed the Stanford CoreNLP 3.6.0: 
+## Step 1: installing the Stanford CoreNLP 3.6.0 server 
 ```
 http://stanfordnlp.github.io/CoreNLP/index.html#download
 ```
 <br />
-## Step 2: Server configuration and autoloader
-The "Adapter" class needs to know your install configuration. An example of the configuration is included in the "bootstrap.php" file. Example:
+## Step 2: Port for server
+Default port for the Java server is port 9000. If port 9000 is not available you can change the port in the "bootstrap.php" file. Example:
 
 ```
 define('CURLURL' , 'http://localhost:9000/');
-define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Clemma%2Copenie%2Cner%22%2C%22prettyPrint%22%3A%22true%22');
 
-require __DIR__.'/vendor/autoload.php';
 ```
-So this is:
-- The URL of the CoreNLP server. By default localhost:9000
-- The annotator properties: don't change these unless you really need to.
-- Starting the composer autoloader<br />
 
-Now, you can either:<br />
-a) include the above code into your main program OR<br />
-b) include the "bootstrap.php" file into your main program:
-```
-require_once __DIR__.'/bootstrap.php';
-```
-<br />
+
 ## Step 3: Start the CoreNLP serve from the command line. 
 
 ```
@@ -77,21 +66,25 @@ When you surf to this URL, you should see the CoreNLP GUI. If you have problems 
 ```
 http://stanfordnlp.github.io/CoreNLP/corenlp-server.html
 ```
+
 <br />
-## Step 5: Instantiate the adapter:
+# Usage examples
+<br />
+
+## Instantiate the adapter:
 ```
-$coreNLP 	= new Adapter();
+$coreNLP = new CorenlpAdapter();
 ```
 <br />
-## Step 6: To process a text, call the "getOutput" method:
+## To process a text, call the "getOutput" method:
 ```
- $text         = 'The Golden Gate Bridge was designed by Joseph Strauss.'; 
+ $text = 'The Golden Gate Bridge was designed by Joseph Strauss.'; 
  $coreNLP->getOutput($text);
 ```
 
 Note that the first time that you process a text, the server takes about 20 to 30 seconds extra to load definitions. All other calls to the server after that will be much faster. Small texts are usually processed within seconds.
 <br /><br />
-## Step 7: The results
+## The results
 
 If successful the following properties will be available:
 ```
