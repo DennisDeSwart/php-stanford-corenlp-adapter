@@ -97,7 +97,7 @@ See index.php for a real world example
 
 
 ***********************************************************************
-### Diagram 7a: The ServerMemory contains all the server data
+### Diagram A: The ServerMemory contains all the server data
 ***********************************************************************
 ```
 [1] => Array
@@ -735,7 +735,7 @@ See index.php for a real world example
         )
  ```
 ********************************
-### Diagram 7b: Tree With Tokens
+### Diagram B: Tree With Tokens
 ********************************
  ```
 Array
