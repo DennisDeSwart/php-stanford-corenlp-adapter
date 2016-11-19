@@ -34,16 +34,17 @@
         <h1>
 <a id="php-stanford-corenlp-adapter" class="anchor" href="#php-stanford-corenlp-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PHP Stanford CoreNLP adapter</h1>
 
-<p>PHP adapter for use with Stanford CoreNLP tools 3.6.0
+<p>PHP adapter for use with Stanford CoreNLP
 <br></p>
 
 <h2>
 <a id="features" class="anchor" href="#features" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Features</h2>
 
 <ul>
-<li>PHP command line interface to the JAVA Stanford CoreNLP 3.6.0 server</li>
-<li>The package gets the following annotator data: Tokenize, Part-Of-Speech tagging, Lemma, NER, regexNER, OpenIE</li>
-<li>From the results, the package creates Part-Of-Speech Trees with depth, ID's and parentID's.
+<li>Connect to Stanford University CoreNLP API online</li>
+<li>Connect to Stanford CoreNLP 3.6.0 server (Java) through command line</li>
+<li>The package gets the following annotator data: tokenize,ssplit,parse,regexner,pos,depparse,lemma,ner,natlog,openie,dcoref,mention,coref</li>
+<li>The package creates Part-Of-Speech Trees with depth, parent- and child ID
 <br>
 </li>
 </ul>
@@ -54,7 +55,7 @@
 <ul>
 <li>PHP 5.3 or higher: it also works on PHP 7</li>
 <li>Windows or Linux</li>
-<li>cURL</li>
+<li>Java server connection requires cURL. Note: online API connection does not require cURL. </li>
 </ul>
 
 <pre><code>  https://en.wikipedia.org/wiki/CURL
@@ -77,12 +78,12 @@
 <p><br></p>
 
 <h1>
-<a id="installation--walkthrough" class="anchor" href="#installation--walkthrough" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation / Walkthrough</h1>
+<a id="installation--walkthrough-for-java-server-version" class="anchor" href="#installation--walkthrough-for-java-server-version" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation / Walkthrough for Java server version</h1>
 
 <p><br></p>
 
 <h2>
-<a id="step-1-make-sure-you-have-installed-the-stanford-corenlp-360" class="anchor" href="#step-1-make-sure-you-have-installed-the-stanford-corenlp-360" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 1: make sure you have installed the Stanford CoreNLP 3.6.0:</h2>
+<a id="step-1-installing-the-stanford-corenlp-360-server" class="anchor" href="#step-1-installing-the-stanford-corenlp-360-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 1: installing the Stanford CoreNLP 3.6.0 server</h2>
 
 <pre><code>http://stanfordnlp.github.io/CoreNLP/index.html#download
 </code></pre>
@@ -90,33 +91,13 @@
 <p><br></p>
 
 <h2>
-<a id="step-2-server-configuration-and-autoloader" class="anchor" href="#step-2-server-configuration-and-autoloader" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2: Server configuration and autoloader</h2>
+<a id="step-2-port-for-server" class="anchor" href="#step-2-port-for-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 2: Port for server</h2>
 
-<p>The "Adapter" class needs to know your install configuration. An example of the configuration is included in the "bootstrap.php" file. Example:</p>
+<p>Default port for the Java server is port 9000. If port 9000 is not available you can change the port in the "bootstrap.php" file. Example:</p>
 
 <pre><code>define('CURLURL' , 'http://localhost:9000/');
-define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Clemma%2Copenie%2Cner%22%2C%22prettyPrint%22%3A%22true%22');
 
-require __DIR__.'/vendor/autoload.php';
 </code></pre>
-
-<p>So this is:</p>
-
-<ul>
-<li>The URL of the CoreNLP server. By default localhost:9000</li>
-<li>The annotator properties: don't change these unless you really need to.</li>
-<li>Starting the composer autoloader<br>
-</li>
-</ul>
-
-<p>Now, you can either:<br>
-a) include the above code into your main program OR<br>
-b) include the "bootstrap.php" file into your main program:</p>
-
-<pre><code>require_once __DIR__.'/bootstrap.php';
-</code></pre>
-
-<p><br></p>
 
 <h2>
 <a id="step-3-start-the-corenlp-serve-from-the-command-line" class="anchor" href="#step-3-start-the-corenlp-serve-from-the-command-line" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 3: Start the CoreNLP serve from the command line.</h2>
@@ -141,18 +122,23 @@ b) include the "bootstrap.php" file into your main program:</p>
 
 <p><br></p>
 
-<h2>
-<a id="step-5-instantiate-the-adapter" class="anchor" href="#step-5-instantiate-the-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 5: Instantiate the adapter:</h2>
+<h1>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage examples</h1>
 
-<pre><code>$coreNLP    = new Adapter();
+<p><br></p>
+
+<h2>
+<a id="instantiate-the-adapter" class="anchor" href="#instantiate-the-adapter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Instantiate the adapter:</h2>
+
+<pre><code>$coreNLP = new CorenlpAdapter();
 </code></pre>
 
 <p><br></p>
 
 <h2>
-<a id="step-6-to-process-a-text-call-the-getoutput-method" class="anchor" href="#step-6-to-process-a-text-call-the-getoutput-method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 6: To process a text, call the "getOutput" method:</h2>
+<a id="to-process-a-text-call-the-getoutput-method" class="anchor" href="#to-process-a-text-call-the-getoutput-method" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To process a text, call the "getOutput" method:</h2>
 
-<pre><code> $text         = 'The Golden Gate Bridge was designed by Joseph Strauss.'; 
+<pre><code> $text = 'The Golden Gate Bridge was designed by Joseph Strauss.'; 
  $coreNLP-&gt;getOutput($text);
 </code></pre>
 
@@ -160,7 +146,7 @@ b) include the "bootstrap.php" file into your main program:</p>
 <br><br></p>
 
 <h2>
-<a id="step-7-the-results" class="anchor" href="#step-7-the-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Step 7: The results</h2>
+<a id="the-results" class="anchor" href="#the-results" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The results</h2>
 
 <p>If successful the following properties will be available:</p>
 
@@ -175,7 +161,7 @@ b) include the "bootstrap.php" file into your main program:</p>
 <hr>
 
 <h3>
-<a id="diagram-7a-the-servermemory-contains-all-the-server-data" class="anchor" href="#diagram-7a-the-servermemory-contains-all-the-server-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Diagram 7a: The ServerMemory contains all the server data</h3>
+<a id="diagram-a-the-servermemory-contains-all-the-server-data" class="anchor" href="#diagram-a-the-servermemory-contains-all-the-server-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Diagram A: The ServerMemory contains all the server data</h3>
 
 <hr>
 
@@ -817,7 +803,7 @@ b) include the "bootstrap.php" file into your main program:</p>
 <hr>
 
 <h3>
-<a id="diagram-7b-tree-with-tokens" class="anchor" href="#diagram-7b-tree-with-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Diagram 7b: Tree With Tokens</h3>
+<a id="diagram-b-tree-with-tokens" class="anchor" href="#diagram-b-tree-with-tokens" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Diagram B: Tree With Tokens</h3>
 
 <hr>
 
