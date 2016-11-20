@@ -199,10 +199,9 @@ class CorenlpAdapter {
         $this->sentenceTree = $this->runSentenceTree($sentence);
 
         $iterator = new RecursiveIteratorIterator(
-        new RecursiveArrayIterator($this->sentenceTree),
-        RecursiveIteratorIterator::SELF_FIRST);
+        new RecursiveArrayIterator($this->sentenceTree));
 
-        for($iterator; $iterator->valid(); $iterator->next())
+        for($iterator->next(); $iterator->valid(); $iterator->next())
         {
             if(!is_array($iterator->current())){
 
