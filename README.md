@@ -106,9 +106,8 @@ If successful the following properties will be available:
  $coreNLP->serverMemory;      //contains all of the server output
  $coreNLP->trees;             //contains processed flat trees. Each part of the tree is assigned an ID key
  
- $coreNLP->getWordValues($coreNLP->trees[1])  // get just the words from a tree + 
+ $coreNLP->getWordValues($coreNLP->trees[1])  // get just the words from a tree
  ```
-## See index.php for more examples
 <br /><br /> 
 
 ********************************
