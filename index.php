@@ -10,7 +10,6 @@
  * - The online API is a public service by Stanford University. Please use with care.
  * - For intensive use or sensitive data, please use the Java version of CoreNLP: http://stanfordnlp.github.io/CoreNLP/download.html
  * - OpenIE annotator is only available on the Java version
- * 
  */
     require_once __DIR__.'/bootstrap.php';  // bootstrap also contains the config
 	
