@@ -19,7 +19,7 @@ PHP adapter for use with Stanford CoreNLP
 ```
   https://en.wikipedia.org/wiki/CURL
 ```
-<br />
+
 
 ## Installation using Composer 
 
