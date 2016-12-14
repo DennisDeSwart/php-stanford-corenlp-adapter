@@ -2,13 +2,15 @@
 # PHP Stanford CoreNLP adapter
 
 PHP adapter for use with Stanford CoreNLP
-<br />
+
+
 ## Features
 - Connect to Stanford University CoreNLP API online
 - Connect to Stanford CoreNLP 3.6.0 server
 - The package gets the following annotator data: tokenize,ssplit,parse,regexner,pos,depparse,lemma,ner,natlog,openie,dcoref,mention,coref
 - The package creates Part-Of-Speech Trees with depth, parent- and child ID
-<br />
+
+
 
 ## Requirements
 - PHP 5.3 or higher: it also works on PHP 7
@@ -33,9 +35,11 @@ You can install the adapter by putting the following line into your composer.jso
     }
 ```
 
-<br />
+
+
 # Using the Stanford CoreNLP online API service
-<br />
+
+
 
 The adapter by default uses Stanford's online API service. This should work right after the composer update.
 Note that the online API is a public service. If you want to analyze large volumes of text or sensitive data,
@@ -73,7 +77,8 @@ java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000
 ```
 You can change the port to 9001 if port 9000 is busy.
 
-<br />
+
+
 ## Step 5: Test if the server has started by surfing to it's URL
 ```
 http://localhost:9000/
@@ -109,7 +114,9 @@ If successful the following properties will be available:
  
  $coreNLP->getWordValues($coreNLP->trees[1])  // get just the words from a tree
  ```
-<br /><br /> 
+
+
+
 
 ********************************
 ### Diagram A: Tree With Tokens
@@ -728,7 +735,8 @@ Array
 ## Any questions?
 
 Please let me know. 
-<br /><br />
+
+
 ## Credits
 
 Some functions are forked from this "Stanford parser" package:
