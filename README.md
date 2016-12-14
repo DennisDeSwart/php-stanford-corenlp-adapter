@@ -45,9 +45,12 @@ The adapter by default uses Stanford's online API service. This should work righ
 Note that the online API is a public service. If you want to analyze large volumes of text or sensitive data,
 please install the Java server version.
 
-<br />
+
+
 # Installation / Walkthrough for Java server version
-<br />
+
+
+
 
 
 ## Step 1: install Java
@@ -60,7 +63,9 @@ https://java.com/en/download/help/index_installing.xml?os=All+Platforms&j=8&n=20
 ```
 http://stanfordnlp.github.io/CoreNLP/index.html#download
 ```
-<br />
+
+
+
 ## Step 3: Port for server
 Default port for the Java server is port 9000. If port 9000 is not available you can change the port in the "bootstrap.php" file. Example:
 
@@ -88,15 +93,19 @@ When you surf to this URL, you should see the CoreNLP GUI. If you have problems 
 http://stanfordnlp.github.io/CoreNLP/corenlp-server.html
 ```
 
-<br />
+
+
+
 # Usage examples
-<br />
+
+
 
 ## Instantiate the adapter:
 ```
 $coreNLP = new CorenlpAdapter();
 ```
-<br />
+
+
 ## To process a text, call the "getOutput" method:
 ```
  $text = 'The Golden Gate Bridge was designed by Joseph Strauss.'; 
@@ -104,7 +113,9 @@ $coreNLP = new CorenlpAdapter();
 ```
 
 Note that the first time that you process a text, the server takes about 20 to 30 seconds extra to load definitions. All other calls to the server after that will be much faster. Small texts are usually processed within seconds.
-<br /><br />
+
+
+
 ## The results
 
 If successful the following properties will be available:
