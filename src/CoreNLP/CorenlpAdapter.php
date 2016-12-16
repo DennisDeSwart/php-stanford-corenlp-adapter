@@ -100,11 +100,20 @@ class CorenlpAdapter {
             die;
         }
 
+        /**
+         * create trees
+         */
+        $sentences = $this->serverOutput['sentences'];
         foreach($this->serverOutput['sentences'] as $sentence){
-            $tree           = $this->getTreeWithTokens($sentence['parse'], $sentence['tokens']); // gets one tree
+            $tree           = $this->getTreeWithTokens($sentence); // gets one tree
             $this->trees[]  = $tree; // collect all trees
         }
-
+        
+        /**
+         * add OpenIE data
+         */
+        $this->addOpenIE();
+        
         // to get the trees just call $coreNLP->trees in the main program
         return;
     }
@@ -136,7 +145,10 @@ class CorenlpAdapter {
      * @param array $sentence
      * @return array
      */
-    public function getTreeWithTokens(string $parse, array $tokens){
+    public function getTreeWithTokens(array $sentence){
+        
+        $parse  = $sentence['parse'];
+        $tokens = $sentence['tokens'];
         
         // get simple tree
         $tree = $this->getTree($parse);
@@ -370,4 +382,44 @@ class CorenlpAdapter {
         }
         return $result;
     }
+
+/**
+ * OpenIE functions
+ */    
+    public function addOpenIE(){
+        
+        foreach($this->serverOutput['sentences'] as $key => $sentence){
+
+            if(array_key_exists('openie', $sentence)){
+
+                $openIEs = $sentence['openie'];
+
+                foreach($openIEs as $keyOpenIE => $openIE){
+
+                    if(!empty($openIE)){
+
+                        foreach($this->trees[$key] as &$node){
+
+                            if(array_key_exists('index', $node)){
+
+                                if( $node['index']-1 >= $openIE['subjectSpan'][0]  && $node['index']-1 < $openIE['subjectSpan'][1] ){
+                                    $node['openIE'][$keyOpenIE] = 'subject';
+                                }
+
+                                if( ($node['index']-1 >= $openIE['relationSpan'][0])  && $node['index']-1 < $openIE['relationSpan'][1] ){
+                                    $node['openIE'][$keyOpenIE] = 'relation';
+                                }
+
+                                if( ($node['index']-1 >= $openIE['objectSpan'][0]) && $node['index']-1 < $openIE['objectSpan'][1] ){
+                                    $node['openIE'][$keyOpenIE] = 'object';
+                                }
+                            }
+                        }
+                    }    
+                }            
+            }
+        }
+    }
+    
+    
 }

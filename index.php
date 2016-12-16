@@ -20,13 +20,13 @@
     // instantiate the class
     $coreNLP 	= new CorenlpAdapter();
 
-    $text1	= 'John shouted and everybody waved.'; // compounded sentence, will parse into 2 seperate sentences
+    $text1 = 'I will meet Mary in New York at 10pm';
     $coreNLP->getOutput($text1);
 
     // Second text
-    $text2         = 'The Golden Gate Bridge was designed by Joseph Strauss.';     // testing NER, regexNER
+    $text2 = 'The Golden Gate Bridge was designed by Joseph Strauss.';
     $coreNLP->getOutput($text2);
-        
+    
 /**
  * Display result
  */
@@ -45,7 +45,7 @@
     // second text tree
     headerText('SECOND TEXT: Part-Of-Speech tree');
     print_r($coreNLP->trees[1]);
-
+    
     // get IDs for a tree
     headerText('EVERY TREE HAS UNIQUE IDs: this shows the Word-tree-IDs for the second tree');
     print_r($coreNLP->getWordValues($coreNLP->trees[1]));

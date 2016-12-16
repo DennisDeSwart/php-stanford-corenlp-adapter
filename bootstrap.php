@@ -9,8 +9,8 @@
 /**
  * Use the online API?
  */    
-    define('ONLINE_API' , TRUE);     
-    
+    define('ONLINE_API', TRUE);  // Set to FALSE if you want to use the offline Java version
+     
  /**
   * Stanford API URL configuration
   */
@@ -20,7 +20,9 @@
  * Java version configuration
  */
     define('CURLURL' , 'http://localhost:9000/');
-    define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Ccoref%2Cdcoref%2Cpos%2Clemma%2Copenie%2Cner%22%2C%22prettyPrint%22%3A%22true%22');
+    define('CURLPROPERTIES' , '%22annotators%22%3A%22tokenize%2Cregexner%2Cparse%2Cpos%2Clemma%2Copenie%2Cner%22%2C%22prettyPrint%22%3A%22true%22');
+    
+    // Note: coref removed from properties since 4.0.0, because it seems to cause problems starting the server
 
 /**
  * Start composer autoloader
