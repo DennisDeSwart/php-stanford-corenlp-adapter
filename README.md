@@ -6,7 +6,7 @@ PHP adapter for use with Stanford CoreNLP
 
 ## Features
 - Connect to Stanford University CoreNLP API online
-- Connect to Stanford CoreNLP 3.6.0 server
+- Connect to Stanford CoreNLP 3.7.0 server
 - The package gets the following annotator data: tokenize,ssplit,parse,regexner,pos,depparse,lemma,ner,natlog,openie,mention
 - The package creates Part-Of-Speech Trees with depth, parent- and child ID
 
@@ -26,7 +26,7 @@ https://en.wikipedia.org/wiki/Subject%E2%80%93verb%E2%80%93object
 
 ## Requirements
 - PHP 5.3 or higher: it also works on PHP 7
-- Windows or Linux
+- Windows or Linux 64-bit, 8Gb memory or more recommended
 - Connection to Java server requires cURL.
 - Note: Connection to Stanford CoreNLP API online does NOT require cURL.
 
@@ -71,7 +71,7 @@ please install the Java server version.
 https://java.com/en/download/help/index_installing.xml?os=All+Platforms&j=8&n=20
 ```
 
-## Step 2: installing the Stanford CoreNLP 3.6.0 server 
+## Step 2: installing the Stanford CoreNLP 3.7.0 server 
 ```
 http://stanfordnlp.github.io/CoreNLP/index.html#download
 ```
@@ -92,10 +92,10 @@ define('CURLURL' , 'http://localhost:9000/');
 Go to the download directory, then enter the following command:
 
 ```
-java -mx4g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000
+java -mx8g -cp "*" edu.stanford.nlp.pipeline.StanfordCoreNLPServer -port 9000
 ```
-You can change the port to 9001 if port 9000 is busy (see step 3)
 
+Important note: the Stanford manual says "-mx4g", however I found that this can lead to a Java OutOfMemory error. It is also important to use a 64-bit operating system with at enough memory (8Gb or more recommended)
 
 
 ## Step 5: Test if the server has started by surfing to it's URL
