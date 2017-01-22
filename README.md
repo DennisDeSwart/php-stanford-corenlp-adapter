@@ -4,11 +4,13 @@
 PHP adapter for use with Stanford CoreNLP
 
 
+
 ## Features
 - Connect to Stanford University CoreNLP API online
 - Connect to Stanford CoreNLP 3.7.0 server
 - Annotators available: tokenize,ssplit,pos, parse, depparse, ner, regexner,lemma, mention, natlog, coref, openie, kbp
 - The package creates Part-Of-Speech Trees with depth, parent- and child ID
+
 
 
 ## Requirements
@@ -21,12 +23,14 @@ PHP adapter for use with Stanford CoreNLP
 ```
 
 
+
 ## Installation using ZIP files 
 
 - Install Stanford CoreNLP Server. See the installation walkthrough below. 
 - Download and unpack the files from this package.
 - Copy the files to your to your webserver directory. Usually "htdocs" or "var/www".
 - Run a Composer update
+
 
 
 ## Installation using Composer 
@@ -44,12 +48,14 @@ PHP adapter for use with Stanford CoreNLP
 - Run a composer update
 
 
+
 ## Using the Stanford CoreNLP online API service
 
 
 The adapter by default uses Stanford's online API service. This should work right after the composer update.
 Note that the online API is a public service. If you want to analyze large volumes of text or sensitive data,
 please install the Java server version.
+
 
 
 ## OpenIE
@@ -64,6 +70,7 @@ Notes:
 http://nlp.stanford.edu/software/openie.html
 https://en.wikipedia.org/wiki/Subject-verb-object
 ```
+
 
 
 # Installation / Walkthrough for Java server version

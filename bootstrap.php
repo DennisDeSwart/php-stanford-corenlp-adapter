@@ -5,6 +5,7 @@
  */
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
+    ini_set('max_execution_time', 300); // 300 seconds, because some analysis can take up to 1 or 2 minutes.
 
 /**
  * Use the online API?
@@ -41,4 +42,11 @@
 /**
  * Start composer autoloader
  */
-    require __DIR__.'/vendor/autoload.php';
+    
+    if(!@include_once(__DIR__.'/vendor/autoload.php')) {
+        echo '<br />CoreNLP Adapter error: could not load "Composer" files. <br /><br />'
+          . '- Run "composer update" on the command line<br />'
+          . '- If Composer is not installed, go to: <a href="https://getcomposer.org/">install Composer</a></p>';
+        die;
+    }
+   

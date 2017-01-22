@@ -1,16 +1,14 @@
 <?php
 
 /**
- * Important notes (1):
+ * Important notes:
  * - To use the online API  : set ONLINE_API to TRUE
  * - To use Java CoreNLP    : set ONLINE_API to FALSE
  * 
- * Important notes (2):
- * - ONLINE_API is set to TRUE by default. You can change this setting in "bootstrap.php"
- * - The online API is a public service by Stanford University. Please use with care.
- * - For intensive use or sensitive data, please use the Java version of CoreNLP: http://stanfordnlp.github.io/CoreNLP/download.html
+ * - ONLINE_API is set to FALSE by default. You can change this setting in "bootstrap.php"
  * - OpenIE annotator is only available on the Java version
  */
+
     require_once __DIR__.'/bootstrap.php';  // bootstrap also contains the config
 	
 /**
