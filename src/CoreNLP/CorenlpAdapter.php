@@ -8,21 +8,20 @@ class CorenlpAdapter {
 	
 /**
  * 
- * COMMAND LINE FUNCTIONS
+ * SERVER OUTPUT FUNCTIONS
  * 
  */
-    
     public $serverRawOutput = ''; // container for serveroutput
     public $serverOutput    = ''; // container for decoded data
     public $serverMemory    = ''; // keeps all the output
+    public $trees           = array(); // keeps parsed trees
 
+    
     /**
-     * function getOnlineOutput:
+     * function getServerOutputOnline
      * - sends request to online CoreNLP API
      * - returns JSON reply
      */
-
-     
     public function getServerOutputOnline(string $text){
     
         $doc = new DomDocument();
@@ -41,14 +40,22 @@ class CorenlpAdapter {
 
     /**
      * function getServerOutput:
-     * - sends the server command
+     * - sends a request
      * - returns server output
      * 
      * @param string $text
      * @return type
      */
     public function getServerOutput(string $text){
-
+        
+       if(USE_GUZZLE){          
+            $this->getOutputGuzzle($text);
+        } else {         
+            $this->getOutputCurl($text);
+        }     
+    }
+    
+    public function getOutputCurl($text){
         // create a shell command
         $command = 'curl --data "'.$text.'" "'.CURLURL.'"?properties={"'.CURLPROPERTIES.'"}';
 
@@ -61,19 +68,24 @@ class CorenlpAdapter {
         }
 
         // get object with data
-        $this->serverOutput	= json_decode($this->serverRawOutput, true);	// note: decodes into an array, not an object
+        $this->serverOutput = json_decode($this->serverRawOutput, true);	// note: decodes into an array, not an object
         
         return;
     }
-	
-/**
- * 
- * SERVER OUTPUT FUNCTIONS
- * 
- */
+     
+    public function getOutputGuzzle($text){
+        
+        $client = new \GuzzleHttp\Client();
+        $res = $client->request('POST', CURLURL, [
+            'body' => $text
+        ]);
 
-    // keeps parsed trees
-    public $trees   = array();
+        $json =  $res->getBody();
+        $this->serverOutput = json_decode($json, true);
+        
+        return;
+    }
+    
 
     /**
      * function getOutput

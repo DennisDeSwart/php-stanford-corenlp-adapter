@@ -7,37 +7,31 @@ PHP adapter for use with Stanford CoreNLP
 ## Features
 - Connect to Stanford University CoreNLP API online
 - Connect to Stanford CoreNLP 3.7.0 server
-- The package gets the following annotator data: tokenize,ssplit,parse,regexner,pos,depparse,lemma,ner,natlog,openie,mention
+- Annotators available: tokenize,ssplit,pos, parse, depparse, ner, regexner,lemma, mention, natlog, coref, openie, kbp
 - The package creates Part-Of-Speech Trees with depth, parent- and child ID
 
 
-## OpenIE (adapter version 4.0.0+, only on the Java version)
-
-OpenIE creates "subject-relation-object" tuples. This is similar (but not the same) as the "Subject-Verb-Object" concept of the English language.
-
-Notes:
-- OpenIE is only available on the Java offline version, not with the "online" mode. See the installation walkthrough below
-- OpenIE data is not always available. Sometimes the result array might show empty, this is not an error.
-
-```
-http://nlp.stanford.edu/software/openie.html
-https://en.wikipedia.org/wiki/Subject%E2%80%93verb%E2%80%93object
-```
-
 ## Requirements
-- PHP 5.3 or higher: it also works on PHP 7
+- PHP 5.5 or higher: it also works on PHP 7
 - Windows or Linux 64-bit, 8Gb memory or more recommended
-- Connection to Java server requires cURL.
-- Note: Connection to Stanford CoreNLP API online does NOT require cURL.
+- Either Guzzle HTTP Client (installed by default) or only cURL.
+- Composer for PHP
+```
+    https://getcomposer.org/
+```
 
-```
-  https://en.wikipedia.org/wiki/CURL
-```
+
+## Installation using ZIP files 
+
+- Install Stanford CoreNLP Server. See the installation walkthrough below. 
+- Download and unpack the files from this package.
+- Copy the files to your to your webserver directory. Usually "htdocs" or "var/www".
+- Run a Composer update
 
 
 ## Installation using Composer 
 
-You can install the adapter by putting the following line into your composer.json and running a composer update
+- Insert the following line into the "require" of your "composer.json" file. 
 
 ```
     {
@@ -47,10 +41,10 @@ You can install the adapter by putting the following line into your composer.jso
     }
 ```
 
+- Run a composer update
 
 
 # Using the Stanford CoreNLP online API service
-
 
 
 The adapter by default uses Stanford's online API service. This should work right after the composer update.
@@ -58,9 +52,21 @@ Note that the online API is a public service. If you want to analyze large volum
 please install the Java server version.
 
 
+## OpenIE
+
+OpenIE creates "subject-relation-object" tuples. This is similar (but not the same) as the "Subject-Verb-Object" concept of the English language.
+
+Notes:
+- OpenIE is only available on the Java offline version, not with the "online" mode. See the installation walkthrough below
+- OpenIE data is not always available. Sometimes the result array might show empty, this is not an error.
+
+```
+http://nlp.stanford.edu/software/openie.html
+https://en.wikipedia.org/wiki/Subject-verb-object
+```
+
 
 # Installation / Walkthrough for Java server version
-
 
 
 
