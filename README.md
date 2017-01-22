@@ -44,7 +44,7 @@ PHP adapter for use with Stanford CoreNLP
 - Run a composer update
 
 
-# Using the Stanford CoreNLP online API service
+## Using the Stanford CoreNLP online API service
 
 
 The adapter by default uses Stanford's online API service. This should work right after the composer update.
