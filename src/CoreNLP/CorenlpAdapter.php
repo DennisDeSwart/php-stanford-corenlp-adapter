@@ -22,7 +22,7 @@ class CorenlpAdapter {
      * - sends request to online CoreNLP API
      * - returns JSON reply
      */
-    public function getServerOutputOnline(string $text){
+    public function getServerOutputOnline($text){
     
         $doc = new DomDocument();
         $doc->loadHTMLfile(ONLINE_URL.urlencode($text));
@@ -46,7 +46,7 @@ class CorenlpAdapter {
      * @param string $text
      * @return type
      */
-    public function getServerOutput(string $text){
+    public function getServerOutput($text){
         
        if(USE_GUZZLE){          
             $this->getOutputGuzzle($text);
@@ -92,7 +92,7 @@ class CorenlpAdapter {
      * 
      * - role: all-in-one function to make life easy for the user
      */
-    public function getOutput(string $text){
+    public function getOutput($text){
 
         if(ONLINE_API){
             // run the text through the public API
@@ -142,7 +142,7 @@ class CorenlpAdapter {
       * @param string $parse
       * @return array
       */
-    public function getTree(string $parse){
+    public function getTree($parse){
 
         $this->getSentenceTree($parse);  // creates tree from parse, then saves tree in "mem"
         $result = $this->mem;            // get tree from "mem"    
@@ -157,7 +157,7 @@ class CorenlpAdapter {
      * @param array $sentence
      * @return array
      */
-    public function getTreeWithTokens(array $sentence){
+    public function getTreeWithTokens($sentence){
         
         $parse  = $sentence['parse'];
         $tokens = $sentence['tokens'];
@@ -217,7 +217,7 @@ class CorenlpAdapter {
      * 
      * @param string $sentence
      */
-    public function getSentenceTree(string $sentence){
+    public function getSentenceTree($sentence){
 	
         // parse the tree
         $this->sentenceTree = $this->runSentenceTree($sentence);
@@ -305,7 +305,7 @@ class CorenlpAdapter {
      * @param string $sentence
      * @return type
      */
-    private function runSentenceTree(string $sentence)
+    private function runSentenceTree($sentence)
     {
         $arr 	= array('pennTag' => null);
         $length = strlen($sentence);
@@ -347,7 +347,7 @@ class CorenlpAdapter {
    * @param int $start_pos
    * @return type
    */
-    private function getMatchingBracket(string $string, int $start_pos)
+    private function getMatchingBracket($string, $start_pos)
     {
         $length = strlen($string);
         $bracket = 1;
@@ -370,7 +370,7 @@ class CorenlpAdapter {
  */
     
     // Get an array that contains the keys to words within one tree
-    public function getWordKeys(array $tree){
+    public function getWordKeys($tree){
 
         $result = array();
 
@@ -383,7 +383,7 @@ class CorenlpAdapter {
     }
 
     // Get an array with the tree leaves that contain words
-    public function getWordValues(array $tree){
+    public function getWordValues($tree){
 
         $result = array();
 
