@@ -9,7 +9,8 @@
 
 PHP adapter for use with Stanford CoreNLP
 
-
+## Temporary fix (24-02-2018)
+PHP7 Type hinting removed, because it was causing issues for some users.
 
 ## Features
 - Connect to Stanford University CoreNLP API online
