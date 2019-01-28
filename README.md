@@ -1006,7 +1006,7 @@ Array
 
 ## Any questions?
 
-Please let me know. 
+Please let me know.  
 
 
 ## Credits
