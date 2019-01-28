@@ -13,7 +13,7 @@ class CorenlpAdapter {
  */
     public $serverRawOutput = ''; // container for serveroutput
     public $serverOutput    = ''; // container for decoded data
-    public $serverMemory    = ''; // keeps all the output
+    public $serverMemory    = array(); // keeps all the output
     public $trees           = array(); // keeps parsed trees
 
     
