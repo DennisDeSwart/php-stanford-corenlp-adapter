@@ -30,6 +30,8 @@ PHP adapter for use with Stanford CoreNLP
 ## Update 24th February 2018
 PHP7 Type hinting removed, because it was causing issues for some users.
 
+## Update 28th January 2019
+Fixed issue with PHP 7.1 upwards
 
 ## Installation using ZIP files 
 
